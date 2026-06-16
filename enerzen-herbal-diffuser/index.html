@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EnerZen Herbal Diffuser | Natural Aromatherapy & Calm</title>
+  <meta name="description" content="The EnerZen Herbal Diffuser fills your space with pure essential-oil mist and soft ambient light. Whisper-quiet, 100% natural, 50,000+ happy homes." />
+
+  <!-- ============================================================
+       GOOGLE FONTS — change the font pair here
+       ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       CUSTOMIZATION VARIABLES — edit these to change the whole site
+       ============================================================ */
+    :root {
+      /* Brand colors */
+      --color-primary:        #5B8A5A;   /* sage green */
+      --color-primary-dark:   #466B45;   /* darker shade for hover */
+      --color-primary-glow:   rgba(91, 138, 90, 0.22);
+      --color-accent:         #C97B4A;   /* warm terracotta accent */
+      --color-bg:             #FBF7EF;   /* page background — warm linen */
+      --color-surface:        #FFFFFF;   /* card background */
+      --color-surface-2:      #F3EDDD;   /* elevated card */
+      --color-border:         rgba(53,43,33,0.10);
+      --color-text:           #2B2A24;   /* primary text */
+      --color-text-muted:     #6E6657;   /* secondary text */
+      --color-success:        #4A7856;
+
+      /* Typography */
+      --font-heading:   'Fraunces', serif;
+      --font-body:      'Inter', sans-serif;
+
+      /* Layout */
+      --max-width:      1200px;
+      --border-radius:  18px;
+      --border-radius-sm: 10px;
+
+      /* ---- BRAND TEXT — change these to rebrand ---- */
+      --brand-name:     "EnerZen";
+      --brand-tagline:  "Herbal Diffuser & Natural Aromatherapy";
+    }
+
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ============================================================
+       UTILITY
+       ============================================================ */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section { padding: 96px 0; }
+    .section--tight { padding: 64px 0; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(91,138,90,0.10);
+      color: var(--color-primary);
+      border: 1px solid rgba(91,138,90,0.28);
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      margin-bottom: 18px;
+    }
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 5vw, 50px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--color-text);
+      margin-bottom: 16px;
+    }
+    .section-title span { color: var(--color-primary); font-style: italic; }
+    .section-subtitle {
+      font-size: 17px;
+      color: var(--color-text-muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .section-header .section-subtitle { margin: 0 auto; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 15px;
+      border-radius: var(--border-radius-sm);
+      padding: 14px 28px;
+      transition: all .22s ease;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--color-primary);
+      color: #fff;
+      box-shadow: 0 4px 20px var(--color-primary-glow);
+    }
+    .btn-primary:hover {
+      background: var(--color-primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--color-primary-glow);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+    }
+    .btn-secondary:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+    .btn-lg { padding: 18px 36px; font-size: 16px; border-radius: 12px; }
+    .divider {
+      border: none;
+      border-top: 1px solid var(--color-border);
+      margin: 0;
+    }
+
+    /* ============================================================
+       ANNOUNCEMENT BAR
+       ============================================================ */
+    .announcement-bar {
+      background: var(--color-primary);
+      color: #fff;
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .02em;
+    }
+    /* CUSTOMIZE: Change the announcement text in the HTML below */
+
+    /* ============================================================
+       NAVBAR
+       ============================================================ */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(251,247,239,0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .navbar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      gap: 24px;
+    }
+    .navbar__logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+    .navbar__logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--color-primary);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .navbar__nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .navbar__nav a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      transition: color .2s;
+    }
+    .navbar__nav a:hover { color: var(--color-text); }
+    .navbar__actions { display: flex; align-items: center; gap: 12px; }
+    .nav-cart {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .nav-cart:hover { border-color: var(--color-primary); color: var(--color-primary); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--color-text);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
+    .hero {
+      position: relative;
+      padding: 100px 0 80px;
+      overflow: hidden;
+    }
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 0%, rgba(91,138,90,0.14) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 10% 80%, rgba(201,123,74,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(91,138,90,0.10);
+      border: 1px solid rgba(91,138,90,0.28);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-bottom: 24px;
+    }
+    /* CUSTOMIZE: Edit the hero headline in the HTML */
+    .hero__title {
+      font-family: var(--font-heading);
+      font-size: clamp(40px, 5.5vw, 68px);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -.01em;
+    }
+    .hero__title .highlight { color: var(--color-primary); font-style: italic; }
+    .hero__desc {
+      font-size: 18px;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 36px;
+    }
+    .hero__actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .hero__trust {
+      display: flex;
+      gap: 24px;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--color-border);
+      flex-wrap: wrap;
+    }
+    .hero__trust-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .hero__trust-num {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+    .hero__trust-label {
+      font-size: 13px;
+      color: var(--color-text-muted);
+    }
+    .hero__visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero__product-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 24px;
+      padding: 36px;
+      width: 100%;
+      max-width: 440px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(53,43,33,0.08);
+    }
+    .hero__product-card::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: -1px; right: -1px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+      border-radius: 24px 24px 0 0;
+    }
+    .product-emoji {
+      font-size: 80px;
+      text-align: center;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 8px 24px rgba(91,138,90,0.25));
+    }
+    .product-badge-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .product-badge {
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+    }
+    .product-badge.hot {
+      background: rgba(201,123,74,0.14);
+      border-color: rgba(201,123,74,0.3);
+      color: var(--color-accent);
+    }
+    .hero__product-name {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .hero__product-price {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .price-current {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--color-primary);
+      font-family: var(--font-heading);
+    }
+    .price-was {
+      font-size: 18px;
+      color: var(--color-text-muted);
+      text-decoration: line-through;
+    }
+    .price-save {
+      background: var(--color-success);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .hero__stars {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: var(--color-text-muted);
+    }
+    .stars { color: var(--color-accent); letter-spacing: 2px; }
+    .rating-count { font-weight: 600; color: var(--color-text); }
+
+    /* ============================================================
+       SOCIAL PROOF STRIP
+       ============================================================ */
+    .proof-strip {
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      padding: 20px 0;
+    }
+    .proof-strip__inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .proof-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+    }
+    .proof-item .icon {
+      font-size: 20px;
+    }
+
+    /* ============================================================
+       BENEFITS
+       ============================================================ */
+    .benefits__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .benefit-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius);
+      padding: 32px;
+      transition: border-color .25s, transform .25s;
+    }
+    .benefit-card:hover {
+      border-color: rgba(91,138,90,0.4);
+      transform: translateY(-4px);
+    }
+    .benefit-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(91,138,90,0.12);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .benefit-card h3 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .benefit-card p {
+      font-size: 15px;
+      color: var(--color-text-muted);
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       HOW IT WORKS
+       ============================================================ */
+    .how-it-works { background: var(--color-surface); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      position: relative;
+    }
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 12%;
+      right: 12%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-primary));
+      opacity: .3;
+    }
+    .step {
+      text-align: center;
+      position: relative;
+    }
+    .step__num {
+      width: 56px;
+      height: 56px;
+      background: var(--color-bg);
+      border: 2px solid var(--color-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin: 0 auto 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .step h3 {
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .step p {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       PRODUCTS
+       ============================================================ */
+    .products__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .product-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+      position: relative;
+    }
+    .product-card:hover {
+      border-color: rgba(91,138,90,0.45);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(53,43,33,0.10);
+    }
+    .product-card--featured {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 1px var(--color-primary), 0 20px 50px rgba(91,138,90,0.14);
+    }
+    .product-card__best-seller {
+      position: absolute;
+      top: -1px;
+      left: 24px;
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 0 0 8px 8px;
+    }
+    .product-card__emoji {
+      font-size: 64px;
+      text-align: center;
+      padding: 16px 0 8px;
+    }
+    .product-card__name {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .product-card__model {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin-top: -10px;
+    }
+    .product-card__rating {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--color-text-muted);
+    }
+    .product-card__features {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .feature-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--color-text-muted);
+    }
+    .feature-row .check {
+      color: var(--color-success);
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .product-card__footer {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid var(--color-border);
+    }
+    .product-card__price {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+    .product-card__was {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      text-decoration: line-through;
+    }
+
+    /* ============================================================
+       USE CASES
+       ============================================================ */
+    .use-cases__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .use-case {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius);
+      padding: 24px 20px;
+      text-align: center;
+      transition: border-color .25s, transform .25s;
+    }
+    .use-case:hover {
+      border-color: rgba(91,138,90,0.4);
+      transform: translateY(-3px);
+    }
+    .use-case__icon { font-size: 36px; margin-bottom: 12px; }
+    .use-case h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .use-case p {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       TESTIMONIALS
+       ============================================================ */
+    .testimonials { background: var(--color-surface); }
+    .testimonials__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: border-color .25s;
+    }
+    .testimonial-card:hover { border-color: rgba(91,138,90,0.3); }
+    .testimonial-stars { color: var(--color-accent); font-size: 18px; }
+    .testimonial-text {
+      font-size: 15px;
+      color: var(--color-text);
+      line-height: 1.7;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--color-border);
+    }
+    .author-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .author-name {
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .author-title {
+      font-size: 12px;
+      color: var(--color-text-muted);
+    }
+
+    /* ============================================================
+       FAQ
+       ============================================================ */
+    .faq__list {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .faq-item {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-sm);
+      overflow: hidden;
+    }
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 24px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+      user-select: none;
+      transition: color .2s;
+    }
+    .faq-question:hover { color: var(--color-primary); }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      background: rgba(91,138,90,0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--color-primary);
+      transition: transform .3s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease, padding .35s ease;
+      font-size: 15px;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding: 0 24px 24px;
+    }
+
+    /* ============================================================
+       CTA BANNER
+       ============================================================ */
+    .cta-banner {
+      background: linear-gradient(135deg, #EAF0E3 0%, #FBF7EF 100%);
+      border: 1px solid rgba(91,138,90,0.22);
+      border-radius: 24px;
+      padding: 72px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      top: -60%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(91,138,90,0.16) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-banner h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 4vw, 50px);
+      font-weight: 700;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .cta-banner p {
+      font-size: 18px;
+      color: var(--color-text-muted);
+      margin-bottom: 36px;
+      position: relative;
+    }
+    .cta-banner__actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .cta-guarantee {
+      margin-top: 24px;
+      font-size: 13px;
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .footer {
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-border);
+      padding: 60px 0 30px;
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer__brand p {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      margin-top: 16px;
+      line-height: 1.7;
+      max-width: 280px;
+    }
+    .footer__col h4 {
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--color-text);
+      margin-bottom: 16px;
+    }
+    .footer__col ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer__col ul li a {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      transition: color .2s;
+    }
+    .footer__col ul li a:hover { color: var(--color-primary); }
+    .footer__bottom {
+      padding-top: 28px;
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--color-text-muted);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer__badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .footer__badge {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+    }
+
+    /* ============================================================
+       TIP BAR
+       ============================================================ */
+    .tip-bar {
+      background: rgba(91,138,90,0.07);
+      border: 1px solid rgba(91,138,90,0.22);
+      border-radius: var(--border-radius-sm);
+      padding: 14px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--color-primary-dark);
+      line-height: 1.5;
+      max-width: 760px;
+      margin: 0 auto 60px;
+    }
+    .tip-bar .tip-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+    /* ============================================================
+       DOWNLOAD BUTTON (floating)
+       ============================================================ */
+    .download-fab {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-text);
+      cursor: pointer;
+      box-shadow: 0 8px 32px rgba(53,43,33,0.18);
+      transition: all .2s;
+    }
+    .download-fab:hover {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(91,138,90,0.3);
+    }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 1024px) {
+      .products__grid { grid-template-columns: repeat(2, 1fr); }
+      .benefits__grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials__grid { grid-template-columns: repeat(2, 1fr); }
+      .use-cases__grid { grid-template-columns: repeat(2, 1fr); }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .steps::before { display: none; }
+    }
+    @media (max-width: 768px) {
+      .hero__grid { grid-template-columns: 1fr; }
+      .hero__visual { display: none; }
+      .products__grid { grid-template-columns: 1fr; }
+      .benefits__grid { grid-template-columns: 1fr; }
+      .testimonials__grid { grid-template-columns: 1fr; }
+      .use-cases__grid { grid-template-columns: repeat(2, 1fr); }
+      .footer__grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .navbar__nav { display: none; }
+      .hamburger { display: flex; }
+      .cta-banner { padding: 48px 24px; }
+      .proof-strip__inner { gap: 20px; }
+      .section { padding: 64px 0; }
+    }
+    @media (max-width: 480px) {
+      .use-cases__grid { grid-template-columns: 1fr; }
+      .download-fab { bottom: 16px; right: 16px; padding: 10px 16px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       ANNOUNCEMENT BAR — CUSTOMIZE: change the promo text here
+       ============================================================ -->
+  <div class="announcement-bar">
+    🌿 FREE SHIPPING on orders over $35 &nbsp;|&nbsp; 30-Day Calm Guarantee &nbsp;|&nbsp; 50,000+ 5-Star Reviews
+  </div>
+
+  <!-- ============================================================
+       NAVBAR — CUSTOMIZE: update links and brand name
+       ============================================================ -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar__inner">
+        <a href="#" class="navbar__logo">
+          <div class="navbar__logo-icon">🌿</div>
+          EnerZen
+        </a>
+        <div class="navbar__nav">
+          <a href="#products">Products</a>
+          <a href="#how-it-works">How It Works</a>
+          <a href="#uses">Use Cases</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div class="navbar__actions">
+          <div class="nav-cart">🛒 Cart (0)</div>
+          <a href="#products" class="btn btn-primary">Shop Now</a>
+          <button class="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO — CUSTOMIZE: headline, subheadline, CTA text, product info
+       ============================================================ -->
+  <section class="hero">
+    <div class="hero__bg"></div>
+    <div class="container">
+      <div class="hero__grid">
+        <div class="hero__content">
+          <div class="hero__badge">
+            🌿 100% Natural &nbsp;·&nbsp; BPA-Free
+          </div>
+          <h1 class="hero__title">
+            Breathe In Calm.<br />
+            <span class="highlight">Breathe Out Stress.</span>
+          </h1>
+          <p class="hero__desc">
+            The EnerZen Herbal Diffuser blends pure essential oils into a fine, whisper-quiet
+            mist — filling your space with calming aromatherapy and a soft ambient glow.
+          </p>
+          <div class="hero__actions">
+            <a href="#products" class="btn btn-primary btn-lg">Shop Herbal Diffusers →</a>
+            <a href="#how-it-works" class="btn btn-secondary btn-lg">See How It Works</a>
+          </div>
+          <div class="hero__trust">
+            <div class="hero__trust-item">
+              <span class="hero__trust-num">500mL</span>
+              <span class="hero__trust-label">Water Tank</span>
+            </div>
+            <div class="hero__trust-item">
+              <span class="hero__trust-num">8hr</span>
+              <span class="hero__trust-label">Continuous Mist</span>
+            </div>
+            <div class="hero__trust-item">
+              <span class="hero__trust-num">50K+</span>
+              <span class="hero__trust-label">Happy Homes</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Product Preview Card -->
+        <div class="hero__visual">
+          <div class="hero__product-card">
+            <div class="product-badge-row">
+              <span class="product-badge hot">🔥 Best Seller</span>
+              <span class="product-badge">500mL Tank</span>
+              <span class="product-badge">Whisper-Quiet</span>
+            </div>
+            <div class="product-emoji">🌬️</div>
+            <div class="hero__stars">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">4.9</span>
+              <span>(8,400 reviews)</span>
+            </div>
+            <div class="hero__product-name">EnerZen Herbal Diffuser Pro</div>
+            <div class="hero__product-price">
+              <span class="price-current">$39.99</span>
+              <span class="price-was">$59.99</span>
+              <span class="price-save">Save 33%</span>
+            </div>
+            <a href="#products" class="btn btn-primary" style="width:100%;justify-content:center;">
+              Add to Cart
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof Strip -->
+  <div class="proof-strip">
+    <div class="container">
+      <div class="proof-strip__inner">
+        <div class="proof-item"><span class="icon">🚚</span> Free Shipping $35+</div>
+        <div class="proof-item"><span class="icon">🔒</span> Secure Checkout</div>
+        <div class="proof-item"><span class="icon">↩️</span> 30-Day Returns</div>
+        <div class="proof-item"><span class="icon">⭐</span> 4.9 / 5 Average Rating</div>
+        <div class="proof-item"><span class="icon">🌎</span> Sustainably Made</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       BENEFITS — CUSTOMIZE: icons, titles, descriptions
+       ============================================================ -->
+  <section class="section" id="benefits">
+    <div class="container">
+      <div class="section-header">
+        <div class="tag">Why EnerZen</div>
+        <h2 class="section-title">Why Wellness Lovers <span>Choose EnerZen</span></h2>
+        <p class="section-subtitle">
+          From bedrooms to yoga studios — natural aromatherapy technology that actually works.
+        </p>
+      </div>
+      <div class="benefits__grid">
+        <!-- CUSTOMIZE: benefit cards -->
+        <div class="benefit-card">
+          <div class="benefit-icon">🌿</div>
+          <h3>Pure Aromatherapy</h3>
+          <p>Ultrasonic technology preserves the full therapeutic benefit of essential oils — unlike heat diffusion, which breaks down their natural properties.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🌙</div>
+          <h3>Whisper-Quiet Operation</h3>
+          <p>Runs under 28dB, quieter than a library, so it can mist all night without disturbing sleep or focus.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">💧</div>
+          <h3>Smart Auto Shut-Off</h3>
+          <p>A built-in sensor automatically powers down when water runs low — no need to babysit or worry about damage.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🎨</div>
+          <h3>7-Color Ambient Light</h3>
+          <p>A soft, customizable LED glow creates a calming atmosphere in any room, day or night.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">⏱️</div>
+          <h3>Flexible Timer Settings</h3>
+          <p>Choose 1, 3, 6 hours, or continuous misting to match your routine — morning meditation or overnight sleep support.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🌎</div>
+          <h3>Eco-Friendly Materials</h3>
+          <p>Crafted from sustainable, BPA-free materials with a natural wood-grain finish built to last for years.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HOW IT WORKS — CUSTOMIZE: steps
+       ============================================================ -->
+  <section class="section how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <div class="tag">The Ritual</div>
+        <h2 class="section-title">How It <span>Works</span></h2>
+        <p class="section-subtitle">
+          Simple. Calming. Ready in minutes.
+        </p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step__num">1</div>
+          <h3>Fill the Tank</h3>
+          <p>Add water and 3–5 drops of your favorite essential oil blend to the 500mL reservoir.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">2</div>
+          <h3>Choose Your Settings</h3>
+          <p>Select mist intensity, timer duration, and ambient light color to match your mood.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">3</div>
+          <h3>Power On &amp; Relax</h3>
+          <p>Ultrasonic technology gently turns the blend into a fine, therapeutic mist.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">4</div>
+          <h3>Breathe &amp; Unwind</h3>
+          <p>Enjoy hours of calming aroma and soft light filling your space.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PRODUCTS — CUSTOMIZE: product names, models, prices, features
+       ============================================================ -->
+  <section class="section" id="products">
+    <div class="container">
+      <div class="section-header">
+        <div class="tag">Our Products</div>
+        <h2 class="section-title">Find Your <span>Perfect Diffuser</span></h2>
+        <p class="section-subtitle">
+          From bedside tables to large living rooms — EnerZen has the right diffuser for your space.
+        </p>
+      </div>
+      <div class="products__grid">
+
+        <!-- PRODUCT CARD 1 — CUSTOMIZE -->
+        <div class="product-card">
+          <div class="product-card__emoji">🪻</div>
+          <div class="product-card__name">EnerZen Mini</div>
+          <div class="product-card__model">120mL · Desk &amp; Travel Size</div>
+          <div class="product-card__rating">
+            <span class="stars">★★★★★</span>
+            <span>4.7 (1,920 reviews)</span>
+          </div>
+          <div class="product-card__features">
+            <div class="feature-row"><span class="check">✓</span> Perfect for desks &amp; nightstands</div>
+            <div class="feature-row"><span class="check">✓</span> Up to 4 hours of mist</div>
+            <div class="feature-row"><span class="check">✓</span> Compact &amp; travel-friendly</div>
+            <div class="feature-row"><span class="check">✓</span> Soft ambient light</div>
+            <div class="feature-row"><span class="check">✓</span> USB powered</div>
+          </div>
+          <div class="product-card__footer">
+            <div>
+              <div class="product-card__price">$24.99</div>
+              <div class="product-card__was">was $34.99</div>
+            </div>
+            <a href="#" class="btn btn-secondary">Add to Cart</a>
+          </div>
+        </div>
+
+        <!-- PRODUCT CARD 2 — FEATURED — CUSTOMIZE -->
+        <div class="product-card product-card--featured">
+          <div class="product-card__best-seller">⭐ Best Seller</div>
+          <div class="product-card__emoji">🌬️</div>
+          <div class="product-card__name">EnerZen Diffuser Pro</div>
+          <div class="product-card__model">500mL · Wood-Grain Finish</div>
+          <div class="product-card__rating">
+            <span class="stars">★★★★★</span>
+            <span>4.9 (8,400 reviews)</span>
+          </div>
+          <div class="product-card__features">
+            <div class="feature-row"><span class="check">✓</span> Whisper-quiet ultrasonic mist</div>
+            <div class="feature-row"><span class="check">✓</span> Up to 300 sq ft coverage</div>
+            <div class="feature-row"><span class="check">✓</span> 7-color ambient light</div>
+            <div class="feature-row"><span class="check">✓</span> Auto shut-off safety sensor</div>
+            <div class="feature-row"><span class="check">✓</span> 1 / 3 / 6hr &amp; continuous timer</div>
+          </div>
+          <div class="product-card__footer">
+            <div>
+              <div class="product-card__price">$39.99</div>
+              <div class="product-card__was">was $59.99</div>
+            </div>
+            <a href="#" class="btn btn-primary">Add to Cart</a>
+          </div>
+        </div>
+
+        <!-- PRODUCT CARD 3 — CUSTOMIZE -->
+        <div class="product-card">
+          <div class="product-card__emoji">🌳</div>
+          <div class="product-card__name">EnerZen Diffuser XL</div>
+          <div class="product-card__model">1000mL · Dual Mist Nozzles</div>
+          <div class="product-card__rating">
+            <span class="stars">★★★★★</span>
+            <span>4.8 (3,150 reviews)</span>
+          </div>
+          <div class="product-card__features">
+            <div class="feature-row"><span class="check">✓</span> Built for large rooms</div>
+            <div class="feature-row"><span class="check">✓</span> Up to 650 sq ft coverage</div>
+            <div class="feature-row"><span class="check">✓</span> Dual mist nozzles</div>
+            <div class="feature-row"><span class="check">✓</span> Natural bamboo finish</div>
+            <div class="feature-row"><span class="check">✓</span> Remote control included</div>
+          </div>
+          <div class="product-card__footer">
+            <div>
+              <div class="product-card__price">$54.99</div>
+              <div class="product-card__was">was $79.99</div>
+            </div>
+            <a href="#" class="btn btn-secondary">Add to Cart</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       USE CASES — CUSTOMIZE: icons, titles, descriptions
+       ============================================================ -->
+  <section class="section--tight" id="uses" style="background:var(--color-surface)">
+    <div class="container">
+      <div class="section-header">
+        <div class="tag">Where It Works</div>
+        <h2 class="section-title">Brings Calm <span>Everywhere</span></h2>
+      </div>
+      <div class="use-cases__grid">
+        <div class="use-case"><div class="use-case__icon">🛏️</div><h3>Bedroom</h3><p>Wind down at night with calming lavender and chamomile blends.</p></div>
+        <div class="use-case"><div class="use-case__icon">💻</div><h3>Home Office</h3><p>Boost focus and reduce stress during long work sessions.</p></div>
+        <div class="use-case"><div class="use-case__icon">🧘</div><h3>Yoga &amp; Meditation</h3><p>Deepen practice with grounding, earthy aromatherapy scents.</p></div>
+        <div class="use-case"><div class="use-case__icon">🍼</div><h3>Nursery</h3><p>Create a soothing, gentle environment for baby's sleep routine.</p></div>
+        <div class="use-case"><div class="use-case__icon">🛋️</div><h3>Living Room</h3><p>Welcome guests with a fresh, naturally fragrant atmosphere.</p></div>
+        <div class="use-case"><div class="use-case__icon">💆</div><h3>Spa Days</h3><p>Recreate a spa-like escape at home with eucalyptus and citrus.</p></div>
+        <div class="use-case"><div class="use-case__icon">📿</div><h3>Meditation Corner</h3><p>Signal your mind it's time to relax with consistent ritual scents.</p></div>
+        <div class="use-case"><div class="use-case__icon">🧳</div><h3>Travel &amp; Hotels</h3><p>Bring familiar calm to unfamiliar rooms with the compact Mini.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TESTIMONIALS — CUSTOMIZE: review text, name, title
+       ============================================================ -->
+  <section class="section testimonials" id="reviews">
+    <div class="container">
+      <div class="section-header">
+        <div class="tag">Customer Reviews</div>
+        <h2 class="section-title">Over 50,000 <span>Happy Homes</span></h2>
+        <p class="section-subtitle">Real people. Real calm. No synthetic fragrances, just nature.</p>
+      </div>
+      <div class="testimonials__grid">
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"I run this every night with lavender oil and it's completely changed my sleep. The light is so soft and calming, and it's truly silent. Worth every penny."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">EM</div>
+            <div>
+              <div class="author-name">Emma R.</div>
+              <div class="author-title">Yoga Instructor, California</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"We use the EnerZen in our spa's relaxation room. Clients constantly ask what the scent is and where they can get one. It's become part of our brand experience."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">NT</div>
+            <div>
+              <div class="author-name">Naomi T.</div>
+              <div class="author-title">Spa Owner, Oregon</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Bought the XL for our living room and it easily fills the whole space. The dual nozzles and wood finish look beautiful — it doesn't look like a gadget, it looks like decor."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">DK</div>
+            <div>
+              <div class="author-name">Daniel K.</div>
+              <div class="author-title">Homeowner, Colorado</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"I'm sensitive to strong scents and this is the first diffuser that's never given me a headache. The mist is so fine and the auto shut-off gives real peace of mind."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">SL</div>
+            <div>
+              <div class="author-name">Sophie L.</div>
+              <div class="author-title">Nurse, Nashville</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Got the Mini for my office desk and it's perfect — quiet enough for video calls, and the eucalyptus blend keeps me focused through the afternoon slump."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">MV</div>
+            <div>
+              <div class="author-name">Marco V.</div>
+              <div class="author-title">Software Engineer, Chicago</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Customer service was fantastic when I had a question about cleaning. Felt like a real human who actually cared. The diffuser itself works flawlessly from day one."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">DW</div>
+            <div>
+              <div class="author-name">Diana W.</div>
+              <div class="author-title">Wellness Coach, Seattle</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FAQ — CUSTOMIZE: questions and answers
+       ============================================================ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <div class="tag">FAQ</div>
+        <h2 class="section-title">Common <span>Questions</span></h2>
+      </div>
+
+      <div class="tip-bar">
+        <span class="tip-icon">🌿</span>
+        <span><strong>Aromatherapy Tip:</strong> Use 100% pure essential oils diluted in water only. Avoid oil-based perfumes or carrier oils, as they can clog the ultrasonic plate over time.</span>
+      </div>
+
+      <div class="faq__list">
+
+        <div class="faq-item">
+          <div class="faq-question">How long does the mist last on a full tank? <span class="faq-icon">+</span></div>
+          <div class="faq-answer">The 500mL Pro tank runs up to 8 hours on intermittent mist, or about 4 hours on continuous mist. The XL's 1000mL tank roughly doubles that runtime. The compact Mini runs up to 4 hours on its 120mL tank.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Is it safe to use around pets and babies? <span class="faq-icon">+</span></div>
+          <div class="faq-answer">The diffuser itself is safe, but always research which essential oils are pet- and baby-safe before diffusing — some oils like tea tree or eucalyptus aren't recommended around cats or infants. When in doubt, dilute lightly and ventilate the room.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What's the difference between the Mini, Pro, and XL? <span class="faq-icon">+</span></div>
+          <div class="faq-answer">The key difference is tank size and coverage area. The Mini (120mL) is ideal for desks and travel. The Pro (500mL) covers most bedrooms and offices up to 300 sq ft. The XL (1000mL) with dual nozzles covers larger living rooms up to 650 sq ft.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Do I need to use special oils or filters? <span class="faq-icon">+</span></div>
+          <div class="faq-answer">No filters required. Any 100% pure essential oil works — diluted with water in the tank. We recommend wiping the ultrasonic plate with a soft cloth weekly to keep it running smoothly.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How do I clean my diffuser? <span class="faq-icon">+</span></div>
+          <div class="faq-answer">Empty any remaining water after each use, then wipe the tank and ultrasonic disc with a soft, damp cloth. For a deeper clean, run a cycle with water and a few drops of white vinegar, then rinse thoroughly.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What is your return policy? <span class="faq-icon">+</span></div>
+          <div class="faq-answer">We offer a 30-day Calm Guarantee on all products. If you're not completely satisfied, contact our team and we'll make it right — no complicated forms, just real people who care.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA BANNER — CUSTOMIZE: headline, CTA text
+       ============================================================ -->
+  <section class="section--tight">
+    <div class="container">
+      <div class="cta-banner">
+        <h2>Ready to Find Your <span style="color:var(--color-primary)">Calm?</span></h2>
+        <p>Join 50,000+ customers who chose natural, whisper-quiet aromatherapy.</p>
+        <div class="cta-banner__actions">
+          <a href="#products" class="btn btn-primary btn-lg">Shop EnerZen Diffusers →</a>
+          <a href="#faq" class="btn btn-secondary btn-lg">Read the FAQ</a>
+        </div>
+        <div class="cta-guarantee">
+          🔒 &nbsp; 30-Day Returns &nbsp;·&nbsp; Free Shipping $35+ &nbsp;·&nbsp; 50,000+ Happy Homes
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER — CUSTOMIZE: links, address, social links
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="navbar__logo">
+            <div class="navbar__logo-icon">🌿</div>
+            EnerZen
+          </div>
+          <p>Crafting natural aromatherapy diffusers that bring calm into everyday spaces — from bedrooms to studios, sustainably and simply.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="#">EnerZen Mini</a></li>
+            <li><a href="#">EnerZen Diffuser Pro</a></li>
+            <li><a href="#">EnerZen Diffuser XL</a></li>
+            <li><a href="#">Essential Oil Blends</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">How It Works</a></li>
+            <li><a href="#">Oil Safety Guide</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About EnerZen</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Return Policy</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 EnerZen. All rights reserved.</span>
+        <div class="footer__badges">
+          <span class="footer__badge">🔒 SSL Secure</span>
+          <span class="footer__badge">📦 Fast Shipping</span>
+          <span class="footer__badge">🌿 100% Natural</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       FLOATING DOWNLOAD BUTTON
+       ============================================================ -->
+  <button class="download-fab" onclick="downloadPage()" title="Download this page as HTML">
+    ⬇️ Download HTML
+  </button>
+
+  <!-- ============================================================
+       JAVASCRIPT
+       ============================================================ -->
+  <script>
+    /* ---------- FAQ accordion ---------- */
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    /* ---------- Mobile hamburger ---------- */
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.navbar__nav');
+    hamburger?.addEventListener('click', () => {
+      const open = navLinks.style.display === 'flex';
+      navLinks.style.display = open ? '' : 'flex';
+      navLinks.style.flexDirection = 'column';
+      navLinks.style.position = 'absolute';
+      navLinks.style.top = '68px';
+      navLinks.style.left = '0';
+      navLinks.style.right = '0';
+      navLinks.style.background = 'var(--color-bg)';
+      navLinks.style.padding = '20px 24px';
+      navLinks.style.borderBottom = '1px solid var(--color-border)';
+      if (open) navLinks.removeAttribute('style');
+    });
+
+    /* ---------- Smooth scroll offset for sticky nav ---------- */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        const top = target.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    });
+
+    /* ---------- Download as HTML ---------- */
+    function downloadPage() {
+      const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([html], { type: 'text/html' });
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      a.href     = url;
+      a.download = 'enerzen-herbal-diffuser-store.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    /* ---------- Scroll-in animation ---------- */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.benefit-card, .product-card, .testimonial-card, .use-case, .step').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity .5s ease, transform .5s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
