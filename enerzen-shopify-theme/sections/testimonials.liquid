@@ -1,0 +1,130 @@
+<section class="section testimonials" id="reviews" style="background:var(--color-surface);">
+  <div class="container">
+    <div class="section-header">
+      {%- if section.settings.tag != blank -%}
+        <div class="tag">{{ section.settings.tag | escape }}</div>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="section-title">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="section-subtitle">{{ section.settings.subheading | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="testimonials__grid" style="grid-template-columns: repeat({{ section.settings.columns }}, 1fr);">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'testimonial' -%}
+            <div class="testimonial-card" {{ block.shopify_attributes }}>
+              <div class="testimonial-stars">
+                {%- assign stars = block.settings.rating | times: 1 -%}
+                {%- for i in (1..stars) -%}★{%- endfor -%}
+              </div>
+              {%- if block.settings.text != blank -%}
+                <p class="testimonial-text">"{{ block.settings.text | escape }}"</p>
+              {%- endif -%}
+              <div class="testimonial-author">
+                <div class="author-avatar">{{ block.settings.initials | escape }}</div>
+                <div>
+                  <div class="author-name">{{ block.settings.name | escape }}</div>
+                  <div class="author-title">{{ block.settings.title | escape }}</div>
+                </div>
+              </div>
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Tag / Eyebrow",
+      "default": "Customer Reviews"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "<p>Over 50,000 <em>Happy Homes</em></p>"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Real people. Real calm. No synthetic fragrances, just nature."
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Columns (Desktop)",
+      "default": "3",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Star Rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Review Text",
+          "default": "This product completely changed my routine. Absolutely love it."
+        },
+        {
+          "type": "text",
+          "id": "initials",
+          "label": "Author Initials (for avatar)",
+          "default": "AB"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Author Name",
+          "default": "Alex B."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Author Title / Location",
+          "default": "Yoga Instructor, California"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        { "type": "testimonial", "settings": { "text": "I run this every night with lavender oil and it's completely changed my sleep. The light is so soft and calming, and it's truly silent. Worth every penny.", "initials": "ER", "name": "Emma R.", "title": "Yoga Instructor, California" } },
+        { "type": "testimonial", "settings": { "text": "We use the EnerZen in our spa's relaxation room. Clients constantly ask what the scent is and where they can get one. It's become part of our brand experience.", "initials": "NT", "name": "Naomi T.", "title": "Spa Owner, Oregon" } },
+        { "type": "testimonial", "settings": { "text": "Bought the XL for our living room and it easily fills the whole space. The dual nozzles and wood finish look beautiful — it looks like decor, not a gadget.", "initials": "DK", "name": "Daniel K.", "title": "Homeowner, Colorado" } },
+        { "type": "testimonial", "settings": { "text": "I'm sensitive to strong scents and this is the first diffuser that's never given me a headache. The mist is so fine and the auto shut-off gives real peace of mind.", "initials": "SL", "name": "Sophie L.", "title": "Nurse, Nashville" } },
+        { "type": "testimonial", "settings": { "text": "Got the Mini for my office desk and it's perfect — quiet enough for video calls, and eucalyptus keeps me focused through the afternoon slump.", "initials": "MV", "name": "Marco V.", "title": "Software Engineer, Chicago" } },
+        { "type": "testimonial", "settings": { "text": "Customer service was fantastic when I had a question about cleaning. Felt like a real human who actually cared. The diffuser works flawlessly from day one.", "initials": "DW", "name": "Diana W.", "title": "Wellness Coach, Seattle" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

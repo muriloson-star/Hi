@@ -1,0 +1,99 @@
+<section class="section--tight use-cases" id="uses" style="background:var(--color-surface);">
+  <div class="container">
+    <div class="section-header">
+      {%- if section.settings.tag != blank -%}
+        <div class="tag">{{ section.settings.tag | escape }}</div>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="section-title">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+    </div>
+
+    <div class="use-cases__grid" style="grid-template-columns: repeat({{ section.settings.columns }}, 1fr);">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'use_case' -%}
+            <div class="use-case" {{ block.shopify_attributes }}>
+              <div class="use-case__icon">{{ block.settings.icon }}</div>
+              <h3>{{ block.settings.heading | escape }}</h3>
+              {%- if block.settings.text != blank -%}
+                <p>{{ block.settings.text | escape }}</p>
+              {%- endif -%}
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Use Cases",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Tag / Eyebrow",
+      "default": "Where It Works"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "<p>Brings Calm <em>Everywhere</em></p>"
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Columns (Desktop)",
+      "default": "4",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "use_case",
+      "name": "Use Case",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "🛏️"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Bedroom"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Wind down at night with calming lavender and chamomile blends."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Use Cases",
+      "blocks": [
+        { "type": "use_case", "settings": { "icon": "🛏️", "heading": "Bedroom", "text": "Wind down at night with calming lavender and chamomile blends." } },
+        { "type": "use_case", "settings": { "icon": "💻", "heading": "Home Office", "text": "Boost focus and reduce stress during long work sessions." } },
+        { "type": "use_case", "settings": { "icon": "🧘", "heading": "Yoga & Meditation", "text": "Deepen practice with grounding, earthy aromatherapy scents." } },
+        { "type": "use_case", "settings": { "icon": "🍼", "heading": "Nursery", "text": "Create a soothing, gentle environment for baby's sleep routine." } },
+        { "type": "use_case", "settings": { "icon": "🛋️", "heading": "Living Room", "text": "Welcome guests with a fresh, naturally fragrant atmosphere." } },
+        { "type": "use_case", "settings": { "icon": "💆", "heading": "Spa Days", "text": "Recreate a spa-like escape at home with eucalyptus and citrus." } },
+        { "type": "use_case", "settings": { "icon": "📿", "heading": "Meditation", "text": "Signal your mind it's time to relax with consistent ritual scents." } },
+        { "type": "use_case", "settings": { "icon": "🧳", "heading": "Travel & Hotels", "text": "Bring familiar calm to unfamiliar rooms with the compact Mini." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

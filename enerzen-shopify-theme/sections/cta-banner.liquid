@@ -1,0 +1,84 @@
+<section class="section--tight">
+  <div class="container">
+    <div class="cta-banner">
+      {%- if section.settings.heading != blank -%}
+        <h2>{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p>{{ section.settings.subheading | escape }}</p>
+      {%- endif -%}
+      <div class="cta-banner__actions">
+        {%- if section.settings.btn_primary_label != blank -%}
+          <a href="{{ section.settings.btn_primary_url }}" class="btn btn-primary btn-lg">
+            {{ section.settings.btn_primary_label | escape }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.btn_secondary_label != blank -%}
+          <a href="{{ section.settings.btn_secondary_url }}" class="btn btn-secondary btn-lg">
+            {{ section.settings.btn_secondary_label | escape }}
+          </a>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.guarantee_text != blank -%}
+        <div class="cta-guarantee">
+          🔒 &nbsp;{{ section.settings.guarantee_text | escape }}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CTA Banner",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Ready to Find Your <em>Calm?</em></p>"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Join 50,000+ customers who chose natural, whisper-quiet aromatherapy."
+    },
+    {
+      "type": "text",
+      "id": "btn_primary_label",
+      "label": "Primary Button Label",
+      "default": "Shop EnerZen Diffusers →"
+    },
+    {
+      "type": "url",
+      "id": "btn_primary_url",
+      "label": "Primary Button Link",
+      "default": "#products"
+    },
+    {
+      "type": "text",
+      "id": "btn_secondary_label",
+      "label": "Secondary Button Label",
+      "default": "Read the FAQ"
+    },
+    {
+      "type": "url",
+      "id": "btn_secondary_url",
+      "label": "Secondary Button Link",
+      "default": "#faq"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee Line (below buttons)",
+      "default": "30-Day Returns · Free Shipping $35+ · 50,000+ Happy Homes"
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA Banner"
+    }
+  ]
+}
+{% endschema %}

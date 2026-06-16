@@ -1,0 +1,355 @@
+<section class="hero section" id="hero">
+  {%- if section.settings.bg_image -%}
+    <div class="hero__bg-img" style="background-image:url('{{ section.settings.bg_image | image_url: width: 1600 }}');"></div>
+    <div class="hero__bg-overlay" style="opacity:{{ section.settings.overlay_opacity | divided_by: 100.0 }};"></div>
+  {%- else -%}
+    <div class="hero__bg"></div>
+  {%- endif -%}
+
+  <div class="container">
+    <div class="hero__grid">
+
+      <!-- Left: Copy -->
+      <div class="hero__content">
+        {%- if section.settings.eyebrow != blank -%}
+          <div class="hero__eyebrow">{{ section.settings.eyebrow | escape }}</div>
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}
+          <h1 class="hero__title">{{ section.settings.heading }}</h1>
+        {%- endif -%}
+
+        {%- if section.settings.subheading != blank -%}
+          <p class="hero__desc">{{ section.settings.subheading | escape }}</p>
+        {%- endif -%}
+
+        <div class="hero__actions">
+          {%- if section.settings.btn_primary_label != blank -%}
+            <a href="{{ section.settings.btn_primary_url }}" class="btn btn-primary btn-lg">
+              {{ section.settings.btn_primary_label | escape }}
+            </a>
+          {%- endif -%}
+          {%- if section.settings.btn_secondary_label != blank -%}
+            <a href="{{ section.settings.btn_secondary_url }}" class="btn btn-secondary btn-lg">
+              {{ section.settings.btn_secondary_label | escape }}
+            </a>
+          {%- endif -%}
+        </div>
+
+        {%- if section.settings.stat_1_num != blank or section.settings.stat_2_num != blank or section.settings.stat_3_num != blank -%}
+          <div class="hero__trust">
+            {%- if section.settings.stat_1_num != blank -%}
+              <div class="hero__trust-item">
+                <span class="hero__trust-num">{{ section.settings.stat_1_num | escape }}</span>
+                <span class="hero__trust-label">{{ section.settings.stat_1_label | escape }}</span>
+              </div>
+            {%- endif -%}
+            {%- if section.settings.stat_2_num != blank -%}
+              <div class="hero__trust-item">
+                <span class="hero__trust-num">{{ section.settings.stat_2_num | escape }}</span>
+                <span class="hero__trust-label">{{ section.settings.stat_2_label | escape }}</span>
+              </div>
+            {%- endif -%}
+            {%- if section.settings.stat_3_num != blank -%}
+              <div class="hero__trust-item">
+                <span class="hero__trust-num">{{ section.settings.stat_3_num | escape }}</span>
+                <span class="hero__trust-label">{{ section.settings.stat_3_label | escape }}</span>
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Right: Product Card -->
+      {%- if section.settings.featured_product != blank -%}
+        {%- assign fp = section.settings.featured_product -%}
+        <div class="hero__visual">
+          <div class="hero__product-card">
+            <div class="product-badge-row">
+              {%- if section.settings.card_badge_1 != blank -%}
+                <span class="product-badge hot">{{ section.settings.card_badge_1 | escape }}</span>
+              {%- endif -%}
+              {%- if section.settings.card_badge_2 != blank -%}
+                <span class="product-badge">{{ section.settings.card_badge_2 | escape }}</span>
+              {%- endif -%}
+            </div>
+
+            {%- if fp.featured_image -%}
+              <div class="hero__product-img">
+                <img src="{{ fp.featured_image | image_url: width: 400 }}"
+                     alt="{{ fp.featured_image.alt | default: fp.title | escape }}"
+                     width="400" loading="eager">
+              </div>
+            {%- else -%}
+              <div class="product-emoji">{{ section.settings.card_emoji }}</div>
+            {%- endif -%}
+
+            {%- if section.settings.show_stars -%}
+              <div class="hero__stars">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">{{ section.settings.rating_score }}</span>
+                <span>({{ section.settings.rating_count }} reviews)</span>
+              </div>
+            {%- endif -%}
+
+            <div class="hero__product-name">{{ fp.title | escape }}</div>
+
+            <div class="hero__product-price">
+              {%- if fp.compare_at_price > fp.price -%}
+                <span class="price-current">{{ fp.price | money }}</span>
+                <span class="price-was">{{ fp.compare_at_price | money }}</span>
+                {%- assign savings = fp.compare_at_price | minus: fp.price | times: 100 | divided_by: fp.compare_at_price -%}
+                <span class="price-save">Save {{ savings }}%</span>
+              {%- else -%}
+                <span class="price-current">{{ fp.price | money }}</span>
+              {%- endif -%}
+            </div>
+
+            <a href="{{ fp.url }}" class="btn btn-primary" style="width:100%;justify-content:center;">
+              {{ section.settings.card_cta | default: 'Shop Now' | escape }}
+            </a>
+          </div>
+        </div>
+      {%- elsif section.settings.card_emoji != blank -%}
+        <!-- Fallback card when no product is selected -->
+        <div class="hero__visual">
+          <div class="hero__product-card">
+            <div class="product-badge-row">
+              {%- if section.settings.card_badge_1 != blank -%}
+                <span class="product-badge hot">{{ section.settings.card_badge_1 | escape }}</span>
+              {%- endif -%}
+              {%- if section.settings.card_badge_2 != blank -%}
+                <span class="product-badge">{{ section.settings.card_badge_2 | escape }}</span>
+              {%- endif -%}
+            </div>
+            <div class="product-emoji">{{ section.settings.card_emoji }}</div>
+            {%- if section.settings.show_stars -%}
+              <div class="hero__stars">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">{{ section.settings.rating_score }}</span>
+                <span>({{ section.settings.rating_count }} reviews)</span>
+              </div>
+            {%- endif -%}
+            <div class="hero__product-name">{{ section.settings.card_product_name | escape }}</div>
+            <div class="hero__product-price">
+              <span class="price-current">{{ section.settings.card_price | escape }}</span>
+              {%- if section.settings.card_compare_price != blank -%}
+                <span class="price-was">{{ section.settings.card_compare_price | escape }}</span>
+              {%- endif -%}
+              {%- if section.settings.card_save != blank -%}
+                <span class="price-save">{{ section.settings.card_save | escape }}</span>
+              {%- endif -%}
+            </div>
+            <a href="{{ section.settings.btn_primary_url }}" class="btn btn-primary" style="width:100%;justify-content:center;">
+              {{ section.settings.card_cta | default: 'Add to Cart' | escape }}
+            </a>
+          </div>
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Text Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Badge",
+      "default": "🌿 100% Natural · BPA-Free"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Headline",
+      "default": "<p>Breathe In Calm.<br><em>Breathe Out Stress.</em></p>"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "The EnerZen Herbal Diffuser blends pure essential oils into a fine, whisper-quiet mist — filling your space with calming aromatherapy and a soft ambient glow."
+    },
+    {
+      "type": "header",
+      "content": "Primary Button"
+    },
+    {
+      "type": "text",
+      "id": "btn_primary_label",
+      "label": "Label",
+      "default": "Shop Herbal Diffusers →"
+    },
+    {
+      "type": "url",
+      "id": "btn_primary_url",
+      "label": "Link",
+      "default": "#products"
+    },
+    {
+      "type": "header",
+      "content": "Secondary Button"
+    },
+    {
+      "type": "text",
+      "id": "btn_secondary_label",
+      "label": "Label",
+      "default": "See How It Works"
+    },
+    {
+      "type": "url",
+      "id": "btn_secondary_url",
+      "label": "Link",
+      "default": "#how-it-works"
+    },
+    {
+      "type": "header",
+      "content": "Trust Stats"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_num",
+      "label": "Stat 1 Number",
+      "default": "500mL"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Stat 1 Label",
+      "default": "Water Tank"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_num",
+      "label": "Stat 2 Number",
+      "default": "8hr"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Stat 2 Label",
+      "default": "Continuous Mist"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_num",
+      "label": "Stat 3 Number",
+      "default": "50K+"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_label",
+      "label": "Stat 3 Label",
+      "default": "Happy Homes"
+    },
+    {
+      "type": "header",
+      "content": "Product Card"
+    },
+    {
+      "type": "product",
+      "id": "featured_product",
+      "label": "Featured Product",
+      "info": "If set, pulls live price and image from your catalog."
+    },
+    {
+      "type": "text",
+      "id": "card_emoji",
+      "label": "Fallback Emoji (no product selected)",
+      "default": "🌬️"
+    },
+    {
+      "type": "text",
+      "id": "card_product_name",
+      "label": "Fallback Product Name",
+      "default": "EnerZen Herbal Diffuser Pro"
+    },
+    {
+      "type": "text",
+      "id": "card_price",
+      "label": "Fallback Price",
+      "default": "$39.99"
+    },
+    {
+      "type": "text",
+      "id": "card_compare_price",
+      "label": "Fallback Compare Price",
+      "default": "$59.99"
+    },
+    {
+      "type": "text",
+      "id": "card_save",
+      "label": "Fallback Save Badge",
+      "default": "Save 33%"
+    },
+    {
+      "type": "text",
+      "id": "card_badge_1",
+      "label": "Card Badge 1 (hot)",
+      "default": "🔥 Best Seller"
+    },
+    {
+      "type": "text",
+      "id": "card_badge_2",
+      "label": "Card Badge 2",
+      "default": "500mL Tank"
+    },
+    {
+      "type": "text",
+      "id": "card_cta",
+      "label": "Card Button Label",
+      "default": "Add to Cart"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stars",
+      "label": "Show Star Rating",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "rating_score",
+      "label": "Rating Score",
+      "default": "4.9"
+    },
+    {
+      "type": "text",
+      "id": "rating_count",
+      "label": "Review Count",
+      "default": "8,400"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image",
+      "info": "Optional. Leave blank for gradient background."
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Image Overlay Opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}

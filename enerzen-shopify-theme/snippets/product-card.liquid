@@ -1,0 +1,64 @@
+{% comment %}
+  Render a product card.
+  Usage: {% render 'product-card', product: product, featured_index: 2, loop_index: forloop.index %}
+{% endcomment %}
+
+{%- assign is_featured = false -%}
+{%- if loop_index == featured_index -%}{%- assign is_featured = true -%}{%- endif -%}
+
+<div class="product-card{% if is_featured %} product-card--featured{% endif %}">
+  {%- if is_featured -%}
+    <div class="product-card__best-seller">⭐ Best Seller</div>
+  {%- endif -%}
+
+  {%- if product.featured_image -%}
+    <div class="product-card__img">
+      <a href="{{ product.url }}">
+        <img
+          src="{{ product.featured_image | image_url: width: 400 }}"
+          alt="{{ product.featured_image.alt | default: product.title | escape }}"
+          width="400"
+          loading="lazy"
+        >
+      </a>
+    </div>
+  {%- endif -%}
+
+  <a href="{{ product.url }}" class="product-card__name">{{ product.title | escape }}</a>
+
+  {%- if product.metafields.custom.subtitle -%}
+    <div class="product-card__model">{{ product.metafields.custom.subtitle }}</div>
+  {%- endif -%}
+
+  {%- if product.metafields.reviews.rating -%}
+    <div class="product-card__rating">
+      <span class="stars">
+        {%- assign rating = product.metafields.reviews.rating.value | times: 1 | round -%}
+        {%- for i in (1..rating) -%}★{%- endfor -%}
+      </span>
+      <span>{{ product.metafields.reviews.rating.value }} ({{ product.metafields.reviews.rating_count }} reviews)</span>
+    </div>
+  {%- endif -%}
+
+  {%- if product.metafields.custom.features -%}
+    <div class="product-card__features">
+      {%- assign feats = product.metafields.custom.features.value | split: '|' -%}
+      {%- for feat in feats -%}
+        <div class="feature-row"><span class="check">✓</span> {{ feat | strip | escape }}</div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  <div class="product-card__footer">
+    <div>
+      <div class="product-card__price">{{ product.price | money }}</div>
+      {%- if product.compare_at_price > product.price -%}
+        <div class="product-card__was">{{ product.compare_at_price | money }}</div>
+      {%- endif -%}
+    </div>
+    <a href="{{ product.url }}"
+       class="btn{% if is_featured %} btn-primary{% else %} btn-secondary{% endif %}">
+      Add to Cart
+    </a>
+  </div>
+</div>

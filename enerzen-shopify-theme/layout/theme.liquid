@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="{{ settings.color_primary }}">
+
+  <title>
+    {%- if page_title == blank -%}{{ shop.name }}{%- else -%}{{ page_title }} | {{ shop.name }}{%- endif -%}
+  </title>
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  {%- if settings.favicon -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32 }}">
+  {%- endif -%}
+
+  <!-- Shopify required head content -->
+  {{ content_for_header }}
+
+  <!-- Google Fonts preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Font faces from theme settings -->
+  {%- liquid
+    assign heading_font = settings.type_heading_font
+    assign body_font    = settings.type_body_font
+  -%}
+  {{ heading_font | font_face: font_display: 'swap' }}
+  {{ body_font    | font_face: font_display: 'swap' }}
+
+  <!-- CSS custom properties injected from Theme Settings -->
+  <style>
+    :root {
+      /* ── Colors ── */
+      --color-primary:       {{ settings.color_primary }};
+      --color-primary-dark:  {{ settings.color_primary | color_darken: 12 }};
+      --color-primary-glow:  {{ settings.color_primary | color_modify: 'alpha', 0.22 }};
+      --color-accent:        {{ settings.color_accent }};
+      --color-accent-light:  {{ settings.color_accent  | color_modify: 'alpha', 0.14 }};
+      --color-bg:            {{ settings.color_background }};
+      --color-surface:       {{ settings.color_surface }};
+      --color-surface-2:     {{ settings.color_surface_2 }};
+      --color-border:        {{ settings.color_border }};
+      --color-text:          {{ settings.color_text }};
+      --color-text-muted:    {{ settings.color_text_muted }};
+      --color-success:       {{ settings.color_primary }};
+      --color-btn-hover:     {{ settings.color_primary | color_darken: 10 }};
+
+      /* ── Typography ── */
+      --font-heading: {{ heading_font.family | json }}, {{ heading_font.fallback_families }};
+      --font-body:    {{ body_font.family    | json }}, {{ body_font.fallback_families }};
+      --font-heading-weight: {{ heading_font.weight }};
+      --font-body-weight:    {{ body_font.weight }};
+
+      /* ── Layout ── */
+      --max-width:         {{ settings.layout_max_width }}px;
+      --border-radius:     {{ settings.border_radius }}px;
+      --border-radius-sm:  {{ settings.border_radius_sm }}px;
+      --section-spacing:   {{ settings.section_spacing }}px;
+    }
+  </style>
+
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+</head>
+
+<body class="template-{{ template.name | handle }}{% if customer %} customer-logged-in{% endif %}">
+
+  <a class="skip-to-content-link" href="#MainContent">
+    Skip to content
+  </a>
+
+  {%- section 'announcement-bar' -%}
+  {%- section 'header' -%}
+
+  <main id="MainContent" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+
+  {%- section 'footer' -%}
+
+  <!-- Cart drawer placeholder — wire up to your cart section -->
+  <div id="cart-overlay" style="display:none;" aria-hidden="true"></div>
+
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+
+</body>
+</html>

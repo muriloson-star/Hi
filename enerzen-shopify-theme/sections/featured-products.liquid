@@ -1,0 +1,287 @@
+<section class="section featured-products" id="products">
+  <div class="container">
+    <div class="section-header">
+      {%- if section.settings.tag != blank -%}
+        <div class="tag">{{ section.settings.tag | escape }}</div>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="section-title">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="section-subtitle">{{ section.settings.subheading | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.collection != blank -%}
+      {%- assign collection = section.settings.collection -%}
+      <div class="products__grid" style="grid-template-columns: repeat({{ section.settings.columns }}, 1fr);">
+        {%- for product in collection.products limit: section.settings.products_to_show -%}
+          {%- render 'product-card', product: product, featured_index: section.settings.featured_index, loop_index: forloop.index -%}
+        {%- endfor -%}
+      </div>
+
+      {%- if section.settings.show_view_all and collection.products.size > section.settings.products_to_show -%}
+        <div style="text-align:center;margin-top:48px;">
+          <a href="{{ collection.url }}" class="btn btn-secondary btn-lg">
+            {{ section.settings.view_all_label | default: 'View All Products' | escape }}
+          </a>
+        </div>
+      {%- endif -%}
+
+    {%- else -%}
+      <!-- Fallback: manual product blocks when no collection selected -->
+      <div class="products__grid" style="grid-template-columns: repeat({{ section.settings.columns }}, 1fr);">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'product' -%}
+              {%- assign prod = block.settings.product -%}
+              <div class="product-card{% if forloop.index == section.settings.featured_index %} product-card--featured{% endif %}" {{ block.shopify_attributes }}>
+                {%- if forloop.index == section.settings.featured_index -%}
+                  <div class="product-card__best-seller">⭐ {{ section.settings.featured_label | default: 'Best Seller' | escape }}</div>
+                {%- endif -%}
+                {%- if prod != blank -%}
+                  {%- if prod.featured_image -%}
+                    <div class="product-card__img">
+                      <img src="{{ prod.featured_image | image_url: width: 400 }}"
+                           alt="{{ prod.featured_image.alt | default: prod.title | escape }}"
+                           width="400" loading="lazy">
+                    </div>
+                  {%- else -%}
+                    <div class="product-card__emoji">{{ block.settings.emoji | default: '🌿' }}</div>
+                  {%- endif -%}
+                  <div class="product-card__name">{{ prod.title | escape }}</div>
+                  {%- if block.settings.subtitle != blank -%}
+                    <div class="product-card__model">{{ block.settings.subtitle | escape }}</div>
+                  {%- endif -%}
+                  {%- if block.settings.show_rating -%}
+                    <div class="product-card__rating">
+                      <span class="stars">★★★★★</span>
+                      <span>{{ block.settings.rating }} ({{ block.settings.review_count }} reviews)</span>
+                    </div>
+                  {%- endif -%}
+                  {%- unless block.settings.features == blank -%}
+                    <div class="product-card__features">
+                      {%- assign features = block.settings.features | split: '|' -%}
+                      {%- for feat in features -%}
+                        <div class="feature-row"><span class="check">✓</span> {{ feat | strip | escape }}</div>
+                      {%- endfor -%}
+                    </div>
+                  {%- endunless -%}
+                  <div class="product-card__footer">
+                    <div>
+                      <div class="product-card__price">{{ prod.price | money }}</div>
+                      {%- if prod.compare_at_price > prod.price -%}
+                        <div class="product-card__was">{{ prod.compare_at_price | money }}</div>
+                      {%- endif -%}
+                    </div>
+                    <a href="{{ prod.url }}" class="btn{% if forloop.index == section.settings.featured_index %} btn-primary{% else %} btn-secondary{% endif %}">
+                      {{ section.settings.add_to_cart_label | default: 'Add to Cart' | escape }}
+                    </a>
+                  </div>
+                {%- else -%}
+                  <div class="product-card__emoji">{{ block.settings.emoji | default: '🌿' }}</div>
+                  <div class="product-card__name">{{ block.settings.name | escape }}</div>
+                  {%- if block.settings.subtitle != blank -%}
+                    <div class="product-card__model">{{ block.settings.subtitle | escape }}</div>
+                  {%- endif -%}
+                  {%- unless block.settings.features == blank -%}
+                    <div class="product-card__features">
+                      {%- assign features = block.settings.features | split: '|' -%}
+                      {%- for feat in features -%}
+                        <div class="feature-row"><span class="check">✓</span> {{ feat | strip | escape }}</div>
+                      {%- endfor -%}
+                    </div>
+                  {%- endunless -%}
+                  <div class="product-card__footer">
+                    <div>
+                      <div class="product-card__price">{{ block.settings.price | escape }}</div>
+                      {%- if block.settings.compare_price != blank -%}
+                        <div class="product-card__was">{{ block.settings.compare_price | escape }}</div>
+                      {%- endif -%}
+                    </div>
+                    <a href="{{ block.settings.url | default: '#' }}" class="btn{% if forloop.index == section.settings.featured_index %} btn-primary{% else %} btn-secondary{% endif %}">
+                      {{ section.settings.add_to_cart_label | default: 'Add to Cart' | escape }}
+                    </a>
+                  </div>
+                {%- endif -%}
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Tag / Eyebrow",
+      "default": "Our Products"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "<p>Find Your <em>Perfect Diffuser</em></p>"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "From bedside tables to large living rooms — EnerZen has the right diffuser for your space."
+    },
+    {
+      "type": "header",
+      "content": "Collection Source"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Select a collection to auto-populate product cards. Leave blank to use manual cards below."
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products to Show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Columns (Desktop)",
+      "default": "3",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "featured_index",
+      "label": "Featured Card Position",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 2,
+      "info": "Which card gets the highlighted 'Best Seller' style."
+    },
+    {
+      "type": "text",
+      "id": "featured_label",
+      "label": "Featured Card Label",
+      "default": "Best Seller"
+    },
+    {
+      "type": "text",
+      "id": "add_to_cart_label",
+      "label": "Button Label",
+      "default": "Add to Cart"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show View All Button",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "View All Button Label",
+      "default": "View All Products"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product Card",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product",
+          "info": "Leave blank to use manual fields below."
+        },
+        {
+          "type": "text",
+          "id": "emoji",
+          "label": "Emoji (if no product image)",
+          "default": "🌿"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Manual Product Name",
+          "default": "EnerZen Diffuser"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle / Model",
+          "default": "500mL · Wood-Grain Finish"
+        },
+        {
+          "type": "textarea",
+          "id": "features",
+          "label": "Features (pipe-separated)",
+          "default": "Whisper-quiet ultrasonic mist|7-color ambient light|Auto shut-off|1/3/6hr timer",
+          "info": "Separate each feature with a pipe character |"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Manual Price",
+          "default": "$39.99"
+        },
+        {
+          "type": "text",
+          "id": "compare_price",
+          "label": "Manual Compare Price",
+          "default": "$59.99"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Manual Product URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_rating",
+          "label": "Show Star Rating",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "rating",
+          "label": "Rating Score",
+          "default": "4.9"
+        },
+        {
+          "type": "text",
+          "id": "review_count",
+          "label": "Review Count",
+          "default": "8,400"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Products",
+      "blocks": [
+        { "type": "product", "settings": { "emoji": "🪻", "name": "EnerZen Mini", "subtitle": "120mL · Desk & Travel", "features": "Desk & nightstand size|Up to 4 hours|Compact & portable|Soft ambient light|USB powered", "price": "$24.99", "compare_price": "$34.99", "rating": "4.7", "review_count": "1,920" } },
+        { "type": "product", "settings": { "emoji": "🌬️", "name": "EnerZen Diffuser Pro", "subtitle": "500mL · Wood-Grain", "features": "Whisper-quiet ultrasonic|Up to 300 sq ft|7-color ambient light|Auto shut-off sensor|1/3/6hr & continuous", "price": "$39.99", "compare_price": "$59.99", "rating": "4.9", "review_count": "8,400" } },
+        { "type": "product", "settings": { "emoji": "🌳", "name": "EnerZen Diffuser XL", "subtitle": "1000mL · Dual Nozzles", "features": "Built for large rooms|Up to 650 sq ft|Dual mist nozzles|Bamboo finish|Remote control", "price": "$54.99", "compare_price": "$79.99", "rating": "4.8", "review_count": "3,150" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

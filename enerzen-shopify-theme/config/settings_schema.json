@@ -1,0 +1,216 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "EnerZen Natural",
+    "theme_version": "1.0.0",
+    "theme_author": "EnerZen",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Brand Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary Color",
+        "default": "#5B8A5A",
+        "info": "Used for buttons, links, accents, and highlights."
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent Color",
+        "default": "#C97B4A",
+        "info": "Used for secondary accents and save badges."
+      },
+      {
+        "type": "header",
+        "content": "Background & Surface"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Page Background",
+        "default": "#FBF7EF"
+      },
+      {
+        "type": "color",
+        "id": "color_surface",
+        "label": "Card Background",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_surface_2",
+        "label": "Elevated Card Background",
+        "default": "#F3EDDD"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Border Color",
+        "default": "#E0D8C8"
+      },
+      {
+        "type": "header",
+        "content": "Text"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Body Text",
+        "default": "#2B2A24"
+      },
+      {
+        "type": "color",
+        "id": "color_text_muted",
+        "label": "Secondary Text",
+        "default": "#6E6657"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "type_heading_font",
+        "label": "Heading Font",
+        "default": "fraunces_n7"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "label": "Body Font",
+        "default": "inter_n4"
+      },
+      {
+        "type": "range",
+        "id": "type_body_size",
+        "label": "Base Font Size",
+        "min": 14,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "default": 16
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "layout_max_width",
+        "label": "Max Content Width",
+        "min": 960,
+        "max": 1440,
+        "step": 40,
+        "unit": "px",
+        "default": 1200
+      },
+      {
+        "type": "range",
+        "id": "border_radius",
+        "label": "Card Border Radius",
+        "min": 0,
+        "max": 32,
+        "step": 2,
+        "unit": "px",
+        "default": 18
+      },
+      {
+        "type": "range",
+        "id": "border_radius_sm",
+        "label": "Button Border Radius",
+        "min": 0,
+        "max": 24,
+        "step": 2,
+        "unit": "px",
+        "default": 10
+      },
+      {
+        "type": "range",
+        "id": "section_spacing",
+        "label": "Section Vertical Spacing",
+        "min": 48,
+        "max": 128,
+        "step": 8,
+        "unit": "px",
+        "default": 96
+      }
+    ]
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo Image",
+        "info": "Displayed in the header. Leave blank to use the shop name as text."
+      },
+      {
+        "type": "range",
+        "id": "logo_max_width",
+        "label": "Logo Width",
+        "min": 80,
+        "max": 300,
+        "step": 10,
+        "unit": "px",
+        "default": 140
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "Displayed in browser tabs. Recommended: 32×32 PNG."
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok_link",
+        "label": "TikTok URL"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "Pinterest URL"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Cart Type",
+        "default": "drawer",
+        "options": [
+          { "value": "drawer", "label": "Slide-out Drawer" },
+          { "value": "page",   "label": "Cart Page" }
+        ]
+      }
+    ]
+  }
+]

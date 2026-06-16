@@ -1,0 +1,38 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Skip to content"
+    },
+    "currency": {
+      "symbol": "$"
+    }
+  },
+  "header": {
+    "cart": "Cart",
+    "account": "Account",
+    "search": "Search"
+  },
+  "products": {
+    "add_to_cart": "Add to Cart",
+    "adding": "Adding…",
+    "added": "Added ✓",
+    "sold_out": "Sold Out",
+    "unavailable": "Unavailable",
+    "sale": "Sale",
+    "best_seller": "Best Seller"
+  },
+  "cart": {
+    "empty": "Your cart is empty.",
+    "subtotal": "Subtotal",
+    "checkout": "Check Out"
+  },
+  "sections": {
+    "hero": {
+      "default_eyebrow": "🌿 100% Natural · BPA-Free",
+      "default_heading": "Breathe In Calm. <em>Breathe Out Stress.</em>"
+    }
+  },
+  "footer": {
+    "copyright": "All rights reserved."
+  }
+}
