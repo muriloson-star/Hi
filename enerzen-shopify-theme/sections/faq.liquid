@@ -1,0 +1,94 @@
+<section class="section faq" id="faq">
+  <div class="container">
+    <div class="section-header">
+      {%- if section.settings.tag != blank -%}
+        <div class="tag">{{ section.settings.tag | escape }}</div>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="section-title">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.tip_text != blank -%}
+      <div class="tip-bar">
+        <span class="tip-icon">🌿</span>
+        <span>{{ section.settings.tip_text }}</span>
+      </div>
+    {%- endif -%}
+
+    <div class="faq__list">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'question' -%}
+            <div class="faq-item" {{ block.shopify_attributes }}>
+              <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+                {{ block.settings.question | escape }}
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </div>
+              <div class="faq-answer" role="region">
+                {{ block.settings.answer | escape }}
+              </div>
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Tag / Eyebrow",
+      "default": "FAQ"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "<p>Common <em>Questions</em></p>"
+    },
+    {
+      "type": "textarea",
+      "id": "tip_text",
+      "label": "Tip / Notice Bar (leave blank to hide)",
+      "default": "Aromatherapy Tip: Use 100% pure essential oils diluted in water only. Avoid oil-based perfumes as they can clog the ultrasonic plate over time."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "How long does the mist last on a full tank?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "The 500mL Pro tank runs up to 8 hours on intermittent mist, or about 4 hours on continuous mist."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        { "type": "question", "settings": { "question": "How long does the mist last on a full tank?", "answer": "The 500mL Pro tank runs up to 8 hours on intermittent mist, or about 4 hours on continuous mist. The XL's 1000mL tank roughly doubles that runtime." } },
+        { "type": "question", "settings": { "question": "Is it safe to use around pets and babies?", "answer": "The diffuser itself is safe, but always research which essential oils are pet- and baby-safe before diffusing — some oils like tea tree or eucalyptus aren't recommended around cats or infants." } },
+        { "type": "question", "settings": { "question": "What's the difference between the Mini, Pro, and XL?", "answer": "The Mini (120mL) is ideal for desks and travel. The Pro (500mL) covers most bedrooms up to 300 sq ft. The XL (1000mL) with dual nozzles covers larger spaces up to 650 sq ft." } },
+        { "type": "question", "settings": { "question": "Do I need to use special oils or filters?", "answer": "No filters required. Any 100% pure essential oil works — diluted with water in the tank. Wipe the ultrasonic plate with a soft cloth weekly to keep it running smoothly." } },
+        { "type": "question", "settings": { "question": "What is your return policy?", "answer": "We offer a 30-day Calm Guarantee on all products. If you're not completely satisfied, contact our team and we'll make it right." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

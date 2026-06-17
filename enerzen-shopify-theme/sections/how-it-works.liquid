@@ -1,0 +1,90 @@
+<section class="section how-it-works" id="how-it-works">
+  <div class="container">
+    <div class="section-header">
+      {%- if section.settings.tag != blank -%}
+        <div class="tag">{{ section.settings.tag | escape }}</div>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="section-title">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="section-subtitle">{{ section.settings.subheading | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="steps" style="grid-template-columns: repeat({{ section.blocks | size }}, 1fr);">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'step' -%}
+            <div class="step" {{ block.shopify_attributes }}>
+              <div class="step__num">{{ forloop.index }}</div>
+              {%- if block.settings.heading != blank -%}
+                <h3>{{ block.settings.heading | escape }}</h3>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <p>{{ block.settings.text | escape }}</p>
+              {%- endif -%}
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How It Works",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Tag / Eyebrow",
+      "default": "The Ritual"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "<p>How It <em>Works</em></p>"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Simple. Calming. Ready in minutes."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Step Heading",
+          "default": "Step Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Step Description",
+          "default": "Step description goes here."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "How It Works",
+      "blocks": [
+        { "type": "step", "settings": { "heading": "Fill the Tank", "text": "Add water and 3–5 drops of your favorite essential oil blend to the 500mL reservoir." } },
+        { "type": "step", "settings": { "heading": "Choose Your Settings", "text": "Select mist intensity, timer duration, and ambient light color to match your mood." } },
+        { "type": "step", "settings": { "heading": "Power On & Relax", "text": "Ultrasonic technology gently turns the blend into a fine, therapeutic mist." } },
+        { "type": "step", "settings": { "heading": "Breathe & Unwind", "text": "Enjoy hours of calming aroma and soft light filling your space." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

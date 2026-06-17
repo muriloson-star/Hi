@@ -1,0 +1,21 @@
+{
+  "current": {
+    "color_primary": "#5B8A5A",
+    "color_accent": "#C97B4A",
+    "color_background": "#FBF7EF",
+    "color_surface": "#FFFFFF",
+    "color_surface_2": "#F3EDDD",
+    "color_border": "#E0D8C8",
+    "color_text": "#2B2A24",
+    "color_text_muted": "#6E6657",
+    "type_heading_font": "fraunces_n7",
+    "type_body_font": "inter_n4",
+    "type_body_size": 16,
+    "layout_max_width": 1200,
+    "border_radius": 18,
+    "border_radius_sm": 10,
+    "section_spacing": 96,
+    "logo_max_width": 140,
+    "cart_type": "drawer"
+  }
+}

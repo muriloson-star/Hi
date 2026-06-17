@@ -1,0 +1,137 @@
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+
+      <!-- Brand column -->
+      <div class="footer__brand">
+        <a href="{{ routes.root_url }}" class="header__logo">
+          {%- if settings.logo -%}
+            <img src="{{ settings.logo | image_url: width: 120 }}"
+                 alt="{{ shop.name | escape }}"
+                 width="120" loading="lazy">
+          {%- else -%}
+            <span class="header__logo-text">
+              <span class="header__logo-icon">🌿</span>
+              {{ shop.name }}
+            </span>
+          {%- endif -%}
+        </a>
+        {%- if section.settings.brand_description != blank -%}
+          <p>{{ section.settings.brand_description | escape }}</p>
+        {%- endif -%}
+        {%- if settings.social_instagram_link != blank or settings.social_facebook_link != blank or settings.social_tiktok_link != blank -%}
+          <div class="footer__social">
+            {%- if settings.social_instagram_link != blank -%}
+              <a href="{{ settings.social_instagram_link }}" aria-label="Instagram" class="footer__social-link">IG</a>
+            {%- endif -%}
+            {%- if settings.social_facebook_link != blank -%}
+              <a href="{{ settings.social_facebook_link }}" aria-label="Facebook" class="footer__social-link">FB</a>
+            {%- endif -%}
+            {%- if settings.social_tiktok_link != blank -%}
+              <a href="{{ settings.social_tiktok_link }}" aria-label="TikTok" class="footer__social-link">TK</a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Link columns -->
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'link_column' -%}
+            <div class="footer__col" {{ block.shopify_attributes }}>
+              {%- if block.settings.heading != blank -%}
+                <h4>{{ block.settings.heading | escape }}</h4>
+              {%- endif -%}
+              {%- if block.settings.menu != blank -%}
+                <ul>
+                  {%- for link in block.settings.menu.links -%}
+                    <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+
+    </div>
+
+    <div class="footer__bottom">
+      <span>
+        © {{ 'now' | date: '%Y' }} {{ shop.name }}.
+        {%- if section.settings.copyright_extra != blank %} {{ section.settings.copyright_extra | escape }}{%- endif -%}
+      </span>
+      <div class="footer__badges">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'badge' -%}
+            <span class="footer__badge" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</span>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "brand_description",
+      "label": "Brand Description",
+      "default": "Crafting natural aromatherapy diffusers that bring calm into everyday spaces — sustainably and simply."
+    },
+    {
+      "type": "text",
+      "id": "copyright_extra",
+      "label": "Extra Copyright Text",
+      "default": "All rights reserved."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link_column",
+      "name": "Link Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Column Heading",
+          "default": "Products"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Navigation Menu"
+        }
+      ]
+    },
+    {
+      "type": "badge",
+      "name": "Trust Badge",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Badge Text",
+          "default": "🔒 SSL Secure"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer",
+      "blocks": [
+        { "type": "link_column", "settings": { "heading": "Products" } },
+        { "type": "link_column", "settings": { "heading": "Support" } },
+        { "type": "link_column", "settings": { "heading": "Company" } },
+        { "type": "badge", "settings": { "text": "🔒 SSL Secure" } },
+        { "type": "badge", "settings": { "text": "📦 Fast Shipping" } },
+        { "type": "badge", "settings": { "text": "🌿 100% Natural" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

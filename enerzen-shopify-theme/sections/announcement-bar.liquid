@@ -1,0 +1,48 @@
+{%- if section.settings.show_announcement -%}
+<div class="announcement-bar" style="background:{{ section.settings.bg_color }};color:{{ section.settings.text_color }};">
+  <div class="announcement-bar__inner">
+    {{- section.settings.text | escape -}}
+  </div>
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show Announcement Bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Announcement Text",
+      "default": "🌿 FREE SHIPPING on orders over $35 | 30-Day Calm Guarantee | 50,000+ 5-Star Reviews"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#5B8A5A"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement Bar",
+      "settings": {
+        "show_announcement": true
+      }
+    }
+  ]
+}
+{% endschema %}
