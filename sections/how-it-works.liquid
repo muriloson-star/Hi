@@ -1,0 +1,56 @@
+<section class="section {% if section.settings.bg_style == 'alt' %}section--alt{% endif %}">
+  <div class="page-width">
+    <div class="text-center reveal">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow eyebrow--leaf">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="section-heading text-balance">{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.subheading != blank -%}<p class="section-subtext section-heading">{{ section.settings.subheading }}</p>{%- endif -%}
+    </div>
+    <div class="grid steps__grid">
+      {%- for block in section.blocks -%}
+        <div class="step reveal" {{ block.shopify_attributes }}>
+          <div class="step__num">{{ forloop.index }}</div>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.button_text != blank -%}
+      <div class="text-center reveal" style="margin-top:2.5rem">
+        <a href="{{ section.settings.button_link | default: '#' }}" class="button--primary button--lg">{{ section.settings.button_text }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How it works",
+  "settings": [
+    { "type": "select", "id": "bg_style", "label": "Background", "options": [ { "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" } ], "default": "default" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Simple ritual" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Calm in three easy steps" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "No mess, no guesswork — just add water and breathe." },
+    { "type": "text", "id": "button_text", "label": "Button", "default": "Start your ritual" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Fill with water" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Pour clean water up to the line — the tank holds enough for a full night." }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [ { "name": "How it works" } ],
+  "default": {
+    "blocks": [
+      { "type": "step", "settings": { "title": "Fill with water", "text": "Pour clean water up to the fill line — enough for a full night of mist." } },
+      { "type": "step", "settings": { "title": "Add a few drops", "text": "Drop in your favourite Verdura essential oil blend and replace the lid." } },
+      { "type": "step", "settings": { "title": "Breathe & unwind", "text": "Tap once for a soft mist and warm glow. Let the calm settle in." } }
+    ]
+  }
+}
+{% endschema %}

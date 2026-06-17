@@ -1,0 +1,33 @@
+<section class="section {% if section.settings.bg_style == 'alt' %}section--alt{% endif %}">
+  <div class="page-width">
+    <div class="guarantee reveal">
+      <div class="guarantee__seal">
+        <span>{{ section.settings.seal_number }}</span>
+        <small>{{ section.settings.seal_text }}</small>
+      </div>
+      <div>
+        {%- if section.settings.heading != blank -%}<h2 style="margin-bottom:.6rem">{{ section.settings.heading }}</h2>{%- endif -%}
+        {%- if section.settings.text != blank -%}<p style="color:var(--color-foreground-soft)">{{ section.settings.text }}</p>{%- endif -%}
+        {%- if section.settings.button_text != blank -%}
+          <a href="{{ section.settings.button_link | default: '#' }}" class="button--primary button--lg" style="margin-top:1.4rem">{{ section.settings.button_text }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Guarantee",
+  "settings": [
+    { "type": "select", "id": "bg_style", "label": "Background", "options": [ { "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" } ], "default": "alt" },
+    { "type": "text", "id": "seal_number", "label": "Seal number", "default": "30" },
+    { "type": "text", "id": "seal_text", "label": "Seal text", "default": "Night trial" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Love it, or your money back" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Bring Verdura home and let it become part of your evening ritual. If you're not sleeping calmer within 30 nights, we'll refund every cent — and you can keep the oils on us." },
+    { "type": "text", "id": "button_text", "label": "Button", "default": "Try it risk-free" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "presets": [ { "name": "Guarantee" } ]
+}
+{% endschema %}

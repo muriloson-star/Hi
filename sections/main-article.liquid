@@ -1,0 +1,31 @@
+<article class="section section--tight">
+  <div class="page-width page-width--narrow">
+    <div class="text-center reveal" style="margin-bottom:2rem">
+      <span class="eyebrow eyebrow--leaf">{{ blog.title }}</span>
+      <h1 class="text-balance">{{ article.title }}</h1>
+      <div class="article-card__meta" style="margin-top:.8rem">{{ article.published_at | date: '%B %-d, %Y' }}{% if article.author %} · {{ 'blogs.article.by' | t }} {{ article.author }}{% endif %}</div>
+    </div>
+    {%- if article.image -%}
+      <img src="{{ article.image | image_url: width: 1200 }}" alt="{{ article.image.alt | escape | default: article.title }}" style="border-radius:var(--radius);margin-bottom:2rem" width="1200" height="675">
+    {%- endif -%}
+    <div class="article-body rte reveal">{{ article.content }}</div>
+
+    {%- if blog.comments_enabled? -%}
+      <div style="margin-top:3rem">
+        {%- if article.comments_count > 0 -%}
+          <h2 style="margin-bottom:1.5rem">{{ article.comments_count }} comments</h2>
+          {%- for comment in article.comments -%}
+            <div style="padding:1.2rem 0;border-bottom:1px solid var(--color-border)">
+              <strong>{{ comment.author }}</strong>
+              <div class="rte" style="margin-top:.4rem">{{ comment.content }}</div>
+            </div>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</article>
+
+{% schema %}
+{ "name": "Article", "settings": [] }
+{% endschema %}

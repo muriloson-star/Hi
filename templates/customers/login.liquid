@@ -1,0 +1,29 @@
+<section class="section section--tight">
+  <div class="page-width page-width--narrow" style="max-width:460px">
+    <div class="text-center" style="margin-bottom:2rem">
+      <span class="eyebrow eyebrow--leaf">Welcome back</span>
+      <h1>Sign in</h1>
+    </div>
+
+    <div id="recover" style="display:none">
+      <h2 style="text-align:center;margin-bottom:1rem">Reset your password</h2>
+      {%- form 'recover_customer_password' -%}
+        {%- if form.posted_successfully? -%}<p class="form-success">We've sent you an email with a link to reset your password.</p>{%- endif -%}
+        <div class="field"><label for="RecoverEmail">Email</label><input type="email" name="email" id="RecoverEmail" required></div>
+        <button type="submit" class="button--primary button--full button--lg">Send reset link</button>
+        <p style="text-align:center;margin-top:1rem"><a href="#" onclick="document.getElementById('recover').style.display='none';document.getElementById('login').style.display='block';return false;" class="link-arrow">Back to sign in</a></p>
+      {%- endform -%}
+    </div>
+
+    <div id="login">
+      {%- form 'customer_login' -%}
+        {{ form.errors | default_errors }}
+        <div class="field"><label for="CustomerEmail">Email</label><input type="email" name="customer[email]" id="CustomerEmail" required></div>
+        <div class="field"><label for="CustomerPassword">Password</label><input type="password" name="customer[password]" id="CustomerPassword" required></div>
+        <button type="submit" class="button--primary button--full button--lg">Sign in</button>
+        <p style="text-align:center;margin-top:1rem"><a href="#" onclick="document.getElementById('login').style.display='none';document.getElementById('recover').style.display='block';return false;" class="link-arrow">Forgot your password?</a></p>
+      {%- endform -%}
+      <p style="text-align:center;margin-top:1.5rem;color:var(--color-foreground-soft)">New here? <a href="{{ routes.account_register_url }}" style="color:var(--color-primary);font-weight:600">Create an account</a></p>
+    </div>
+  </div>
+</section>

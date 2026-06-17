@@ -1,0 +1,201 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "bg_style": "default",
+        "eyebrow": "Pure botanical aromatherapy",
+        "heading": "Turn any room into a calm herbal sanctuary",
+        "text": "The Verdura Herbal Diffuser pairs ultra-fine ultrasonic mist with 100% pure plant essential oils — so you can breathe easier, sleep deeper, and feel grounded in minutes.",
+        "button_text": "Shop the diffuser",
+        "button_link": "shopify://collections/all",
+        "button2_text": "How it works",
+        "button2_link": "#product-spotlight",
+        "show_rating": true,
+        "rating": 5,
+        "rating_text": "Loved by 12,000+ calm homes",
+        "card_title": "Ships in 24h",
+        "card_text": "Free & carbon neutral",
+        "card_icon": "truck"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "t1": { "type": "item", "settings": { "text": "100% pure plant essential oils", "icon": "leaf" } },
+        "t2": { "type": "item", "settings": { "text": "BPA-free & whisper quiet", "icon": "drop" } },
+        "t3": { "type": "item", "settings": { "text": "30-night calm guarantee", "icon": "moon" } },
+        "t4": { "type": "item", "settings": { "text": "Free carbon-neutral shipping", "icon": "truck" } },
+        "t5": { "type": "item", "settings": { "text": "Cruelty-free & vegan", "icon": "heart" } },
+        "t6": { "type": "item", "settings": { "text": "Sustainably sourced", "icon": "leaf-eco" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4", "t5", "t6"]
+    },
+    "benefits": {
+      "type": "benefits",
+      "settings": {
+        "eyebrow": "Why you'll love it",
+        "heading": "Wellness you can feel in every breath",
+        "subheading": "Thoughtfully engineered to help you unwind, naturally."
+      },
+      "blocks": {
+        "b1": { "type": "benefit", "settings": { "icon": "moon", "title": "Deeper, calmer sleep", "text": "A soft lavender mist signals your body it's time to wind down." } },
+        "b2": { "type": "benefit", "settings": { "icon": "drop", "title": "Pure plant essential oils", "text": "No synthetics, no fillers — just steam-distilled botanicals." } },
+        "b3": { "type": "benefit", "settings": { "icon": "leaf", "title": "Cleaner, fresher air", "text": "Ultrasonic mist gently humidifies and freshens any room." } },
+        "b4": { "type": "benefit", "settings": { "icon": "clock", "title": "Up to 10 hours of calm", "text": "One fill lasts all night on the whisper-quiet low setting." } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"]
+    },
+    "spotlight": {
+      "type": "product-spotlight",
+      "settings": {
+        "bg_style": "alt",
+        "eyebrow": "The Verdura Herbal Diffuser",
+        "heading": "Your daily ritual of calm",
+        "description": "Hand-finished ceramic, an ultra-fine plant-oil mist and a warm amber glow — designed to help your whole home exhale.",
+        "show_rating": true,
+        "rating": 5,
+        "rating_text": "4.9 · 2,140 reviews",
+        "reassure_1": "Free shipping",
+        "reassure_2": "30-night returns",
+        "reassure_3": "2-year warranty"
+      },
+      "blocks": {
+        "f1": { "type": "feature", "settings": { "text": "Whisper-quiet mist — under 25 dB" } },
+        "f2": { "type": "feature", "settings": { "text": "Up to 10 hours of continuous calm" } },
+        "f3": { "type": "feature", "settings": { "text": "Warm amber mood light, 7 soft tones" } },
+        "f4": { "type": "feature", "settings": { "text": "Auto shut-off when water runs low" } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4"]
+    },
+    "how": {
+      "type": "how-it-works",
+      "settings": {
+        "eyebrow": "Simple ritual",
+        "heading": "Calm in three easy steps",
+        "subheading": "No mess, no guesswork — just add water and breathe.",
+        "button_text": "Start your ritual",
+        "button_link": "shopify://collections/all"
+      },
+      "blocks": {
+        "s1": { "type": "step", "settings": { "title": "Fill with water", "text": "Pour clean water up to the fill line — enough for a full night of mist." } },
+        "s2": { "type": "step", "settings": { "title": "Add a few drops", "text": "Drop in your favourite Verdura essential oil blend and replace the lid." } },
+        "s3": { "type": "step", "settings": { "title": "Breathe & unwind", "text": "Tap once for a soft mist and warm glow. Let the calm settle in." } }
+      },
+      "block_order": ["s1", "s2", "s3"]
+    },
+    "story": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "default",
+        "eyebrow": "Rooted in nature",
+        "heading": "Pure botanicals, nothing to hide",
+        "text": "<p>Every Verdura blend starts with steam-distilled essential oils from regenerative farms. No synthetic fragrance, no phthalates, no parabens — just plants, distilled and bottled with care.</p>"
+      },
+      "blocks": {
+        "c1": { "type": "feature", "settings": { "text": "Steam-distilled, single-origin oils", "icon": "drop" } },
+        "c2": { "type": "feature", "settings": { "text": "Regeneratively farmed botanicals", "icon": "leaf-eco" } },
+        "c3": { "type": "feature", "settings": { "text": "Cruelty-free & never tested on animals", "icon": "heart" } },
+        "st1": { "type": "stat", "settings": { "number": "100%", "label": "Plant-derived" } },
+        "st2": { "type": "stat", "settings": { "number": "0", "label": "Synthetics" } },
+        "st3": { "type": "stat", "settings": { "number": "12k+", "label": "5-star reviews" } }
+      },
+      "block_order": ["c1", "c2", "c3", "st1", "st2", "st3"]
+    },
+    "comparison": {
+      "type": "comparison",
+      "settings": {
+        "eyebrow": "The honest comparison",
+        "heading": "Why people switch to Verdura",
+        "us_label": "Verdura",
+        "them_label": "Typical diffuser"
+      },
+      "blocks": {
+        "r1": { "type": "row", "settings": { "feature": "100% pure plant essential oils", "us": "yes", "them": "no" } },
+        "r2": { "type": "row", "settings": { "feature": "Whisper-quiet under 25 dB", "us": "yes", "them": "no" } },
+        "r3": { "type": "row", "settings": { "feature": "Runs up to 10 hours", "us": "text", "us_text": "10 hrs", "them": "text", "them_text": "3–4 hrs" } },
+        "r4": { "type": "row", "settings": { "feature": "Hand-finished ceramic", "us": "yes", "them": "no" } },
+        "r5": { "type": "row", "settings": { "feature": "2-year warranty", "us": "yes", "them": "no" } },
+        "r6": { "type": "row", "settings": { "feature": "30-night home trial", "us": "yes", "them": "no" } }
+      },
+      "block_order": ["r1", "r2", "r3", "r4", "r5", "r6"]
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "bg_style": "alt",
+        "eyebrow": "Real reviews",
+        "heading": "12,000+ homes a little calmer",
+        "show_summary": true,
+        "summary_text": "4.9/5 from 2,140 verified reviews"
+      },
+      "blocks": {
+        "v1": { "type": "testimonial", "settings": { "quote": "I fall asleep so much faster now. The mist is silky and the lavender blend is heavenly.", "name": "Maya R.", "role": "Portland, OR", "verified": true } },
+        "v2": { "type": "testimonial", "settings": { "quote": "It looks gorgeous on my nightstand and it's whisper quiet. My whole bedroom feels like a spa.", "name": "Jordan T.", "role": "Austin, TX", "verified": true } },
+        "v3": { "type": "testimonial", "settings": { "quote": "Finally a diffuser with real essential oils, not fake fragrance. You can smell the difference.", "name": "Priya S.", "role": "Brooklyn, NY", "verified": true } }
+      },
+      "block_order": ["v1", "v2", "v3"]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Shop the collection",
+        "heading": "Complete your ritual",
+        "subheading": "Pure essential oil blends, crafted to match every mood.",
+        "products_to_show": 4,
+        "button_text": "View all"
+      }
+    },
+    "guarantee": {
+      "type": "guarantee",
+      "settings": {
+        "bg_style": "alt",
+        "seal_number": "30",
+        "seal_text": "Night trial",
+        "heading": "Love it, or your money back",
+        "text": "Bring Verdura home and let it become part of your evening ritual. If you're not sleeping calmer within 30 nights, we'll refund every cent — and you can keep the oils on us.",
+        "button_text": "Try it risk-free",
+        "button_link": "shopify://collections/all"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "eyebrow": "Good to know",
+        "heading": "Questions, answered"
+      },
+      "blocks": {
+        "q1": { "type": "faq", "settings": { "question": "How long does one fill last?", "answer": "<p>Up to 10 hours on the low setting — enough for a full night. About 6 hours on continuous high.</p>" } },
+        "q2": { "type": "faq", "settings": { "question": "Which essential oils can I use?", "answer": "<p>Any pure, water-soluble essential oil. We recommend our plant-based Verdura blends for the cleanest mist and longest diffuser life.</p>" } },
+        "q3": { "type": "faq", "settings": { "question": "Is it safe to leave on overnight?", "answer": "<p>Yes. The auto shut-off turns the diffuser off the moment the water runs low, so it's safe to run while you sleep.</p>" } },
+        "q4": { "type": "faq", "settings": { "question": "What if I don't love it?", "answer": "<p>Try it for 30 nights. If it's not for you, send it back for a full refund — no questions asked.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4"]
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "bg_style": "dark",
+        "eyebrow": "Join the grove",
+        "heading": "Get 10% off your first ritual",
+        "text": "Calming rituals, new seasonal blends and members-only offers — straight to your inbox.",
+        "button_text": "Subscribe",
+        "note": "No spam, just calm. Unsubscribe anytime."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "benefits",
+    "spotlight",
+    "how",
+    "story",
+    "comparison",
+    "testimonials",
+    "featured",
+    "guarantee",
+    "faq",
+    "newsletter"
+  ]
+}

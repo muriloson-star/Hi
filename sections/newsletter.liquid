@@ -1,0 +1,33 @@
+<section class="section {% if section.settings.bg_style == 'alt' %}section--alt{% elsif section.settings.bg_style == 'dark' %}section--dark{% endif %}">
+  <div class="page-width page-width--narrow newsletter reveal">
+    {%- if section.settings.eyebrow != blank -%}<span class="eyebrow eyebrow--leaf">{{ section.settings.eyebrow }}</span>{%- endif -%}
+    {%- if section.settings.heading != blank -%}<h2 class="text-balance">{{ section.settings.heading }}</h2>{%- endif -%}
+    {%- if section.settings.text != blank -%}<p class="section-subtext" style="margin-inline:auto">{{ section.settings.text }}</p>{%- endif -%}
+
+    {%- form 'customer', class: 'newsletter__form' -%}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <input type="email" name="contact[email]" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" required aria-label="Email address">
+      <button type="submit" class="button--primary">{{ section.settings.button_text | default: 'Subscribe' }}</button>
+      {%- if form.posted_successfully? -%}
+        <p class="form-success" style="flex-basis:100%">{{ 'general.newsletter_form.success' | t }}</p>
+      {%- endif -%}
+    {%- endform -%}
+
+    {%- if section.settings.note != blank -%}<p class="newsletter__note">{{ section.settings.note }}</p>{%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    { "type": "select", "id": "bg_style", "label": "Background", "options": [ { "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" }, { "value": "dark", "label": "Dark" } ], "default": "alt" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Join the grove" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Get 10% off your first ritual" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Calming rituals, new seasonal blends and members-only offers — straight to your inbox." },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "Subscribe" },
+    { "type": "text", "id": "note", "label": "Fine print", "default": "No spam, just calm. Unsubscribe anytime." }
+  ],
+  "presets": [ { "name": "Newsletter" } ]
+}
+{% endschema %}

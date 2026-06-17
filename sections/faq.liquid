@@ -1,0 +1,52 @@
+<section class="section {% if section.settings.bg_style == 'alt' %}section--alt{% endif %}">
+  <div class="page-width page-width--narrow">
+    <div class="text-center reveal">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow eyebrow--leaf">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="section-heading text-balance">{{ section.settings.heading }}</h2>{%- endif -%}
+    </div>
+    <div class="faq">
+      {%- for block in section.blocks -%}
+        <div class="faq__item" data-accordion-item {{ block.shopify_attributes }}>
+          <button class="faq__q" data-accordion-trigger aria-expanded="false">
+            <span>{{ block.settings.question }}</span>
+            {% render 'icon', name: 'plus', width: 22, height: 22 %}
+          </button>
+          <div class="faq__a" data-accordion-panel>
+            <div class="faq__a-inner rte">{{ block.settings.answer }}</div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    { "type": "select", "id": "bg_style", "label": "Background", "options": [ { "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" } ], "default": "default" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Good to know" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Questions, answered" }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "How long does one fill last?" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Up to 10 hours on the low, intermittent setting — easily enough for a full night of sleep. On continuous high it runs about 6 hours.</p>" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [ { "name": "FAQ" } ],
+  "default": {
+    "blocks": [
+      { "type": "faq", "settings": { "question": "How long does one fill last?", "answer": "<p>Up to 10 hours on the low setting — enough for a full night. About 6 hours on continuous high.</p>" } },
+      { "type": "faq", "settings": { "question": "Which essential oils can I use?", "answer": "<p>Any pure, water-soluble essential oil. We recommend our plant-based Verdura blends for the cleanest mist and longest diffuser life.</p>" } },
+      { "type": "faq", "settings": { "question": "Is it safe to leave on overnight?", "answer": "<p>Yes. The auto shut-off turns the diffuser off the moment the water runs low, so it's safe to run while you sleep.</p>" } },
+      { "type": "faq", "settings": { "question": "What if I don't love it?", "answer": "<p>Try it for 30 nights. If it's not for you, send it back for a full refund — no questions asked.</p>" } }
+    ]
+  }
+}
+{% endschema %}

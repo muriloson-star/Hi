@@ -1,0 +1,77 @@
+<section class="hero section {% if section.settings.bg_style == 'alt' %}section--alt{% endif %}">
+  <div class="page-width">
+    <div class="hero__grid">
+      <div class="hero__content reveal">
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="eyebrow eyebrow--leaf">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+        <h1 class="text-balance">{{ section.settings.heading }}</h1>
+        {%- if section.settings.text != blank -%}
+          <p class="hero__text">{{ section.settings.text }}</p>
+        {%- endif -%}
+        <div class="hero__ctas">
+          {%- if section.settings.button_text != blank -%}
+            <a href="{{ section.settings.button_link | default: '#' }}" class="button--primary button--lg">{{ section.settings.button_text }}</a>
+          {%- endif -%}
+          {%- if section.settings.button2_text != blank -%}
+            <a href="{{ section.settings.button2_link | default: '#' }}" class="button--secondary button--lg">{{ section.settings.button2_text }}</a>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.show_rating -%}
+          <div class="hero__trust">
+            {% render 'stars', rating: section.settings.rating %}
+            <span style="font-weight:600">{{ section.settings.rating_text }}</span>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="hero__media reveal">
+        <div class="hero__media-shape">
+          {%- if section.settings.image != blank -%}
+            <img src="{{ section.settings.image | image_url: width: 900 }}"
+                 alt="{{ section.settings.image.alt | escape | default: section.settings.heading }}"
+                 width="900" height="900" fetchpriority="high">
+          {%- else -%}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder' }}
+          {%- endif -%}
+        </div>
+        {%- if section.settings.card_text != blank -%}
+          <div class="hero__floating-card">
+            <div class="benefit__icon" style="width:40px;height:40px;margin:0">{% render 'icon', name: section.settings.card_icon, width: 20, height: 20 %}</div>
+            <div>
+              <strong style="font-size:.9rem">{{ section.settings.card_title }}</strong>
+              <small>{{ section.settings.card_text }}</small>
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "select", "id": "bg_style", "label": "Background", "options": [ { "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" } ], "default": "default" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Pure botanical aromatherapy" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Turn any room into a calm herbal sanctuary" },
+    { "type": "textarea", "id": "text", "label": "Subtext", "default": "The Verdura Herbal Diffuser blends ultrasonic mist with pure plant essential oils — so you can breathe easier, sleep deeper, and feel grounded in minutes." },
+    { "type": "text", "id": "button_text", "label": "Primary button", "default": "Shop the diffuser" },
+    { "type": "url", "id": "button_link", "label": "Primary link" },
+    { "type": "text", "id": "button2_text", "label": "Secondary button", "default": "How it works" },
+    { "type": "url", "id": "button2_link", "label": "Secondary link" },
+    { "type": "header", "content": "Social proof" },
+    { "type": "checkbox", "id": "show_rating", "label": "Show rating", "default": true },
+    { "type": "range", "id": "rating", "min": 1, "max": 5, "step": 1, "label": "Stars", "default": 5 },
+    { "type": "text", "id": "rating_text", "label": "Rating text", "default": "Loved by 12,000+ calm homes" },
+    { "type": "header", "content": "Image" },
+    { "type": "image_picker", "id": "image", "label": "Hero image" },
+    { "type": "header", "content": "Floating card" },
+    { "type": "text", "id": "card_title", "label": "Card title", "default": "Ships in 24h" },
+    { "type": "text", "id": "card_text", "label": "Card text", "default": "Free & carbon neutral" },
+    { "type": "select", "id": "card_icon", "label": "Card icon", "options": [ { "value": "truck", "label": "Truck" }, { "value": "leaf", "label": "Leaf" }, { "value": "moon", "label": "Moon" }, { "value": "shield", "label": "Shield" }, { "value": "drop", "label": "Drop" } ], "default": "truck" }
+  ],
+  "presets": [ { "name": "Hero" } ]
+}
+{% endschema %}

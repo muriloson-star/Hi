@@ -1,0 +1,36 @@
+<div class="collection-hero">
+  <div class="page-width">
+    <span class="eyebrow eyebrow--leaf">Browse</span>
+    <h1>{{ section.settings.heading | default: 'Collections' }}</h1>
+  </div>
+</div>
+<section class="section section--tight">
+  <div class="page-width">
+    <div class="product-grid">
+      {%- for collection in collections -%}
+        <a href="{{ collection.url }}" class="product-card reveal">
+          <div class="product-card__media">
+            {%- if collection.featured_image -%}
+              <img src="{{ collection.featured_image | image_url: width: 600 }}" alt="{{ collection.title | escape }}" loading="lazy" width="600" height="600">
+            {%- else -%}
+              {{ 'collection-1' | placeholder_svg_tag: 'placeholder' }}
+            {%- endif -%}
+          </div>
+          <div class="product-card__info">
+            <span class="product-card__title">{{ collection.title }}</span>
+            <span class="product-card__vendor">{{ collection.products_count }} products</span>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collections list",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop by collection" }
+  ]
+}
+{% endschema %}

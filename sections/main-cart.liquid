@@ -1,0 +1,52 @@
+<section class="section section--tight">
+  <div class="page-width page-width--narrow">
+    <h1 style="margin-bottom:2rem">{{ 'cart.general.title' | t }}</h1>
+
+    {%- if cart.item_count > 0 -%}
+      <form action="{{ routes.cart_url }}" method="post" class="cart-page-table">
+        {%- for item in cart.items -%}
+          <div class="cart-line">
+            <a href="{{ item.url }}">{%- if item.image -%}<img src="{{ item.image | image_url: width: 180 }}" alt="{{ item.title | escape }}">{%- endif -%}</a>
+            <div>
+              <a href="{{ item.url }}" class="cart-line__title">{{ item.product.title }}</a>
+              {%- unless item.variant.title contains 'Default' -%}<div class="cart-line__variant">{{ item.variant.title }}</div>{%- endunless -%}
+              <a href="{{ item.url_to_remove }}" class="cart-line__remove" style="display:inline-block;margin-top:.4rem">{{ 'cart.general.remove' | t }}</a>
+            </div>
+            <div class="qty-selector" data-qty>
+              <a href="{{ item.url }}&quantity={{ item.quantity | minus: 1 }}" aria-label="Decrease" style="width:44px;text-align:center;line-height:44px">&minus;</a>
+              <input value="{{ item.quantity }}" readonly aria-label="{{ 'products.product.quantity' | t }}">
+              <a href="{{ item.url }}&quantity={{ item.quantity | plus: 1 }}" aria-label="Increase" style="width:44px;text-align:center;line-height:44px">+</a>
+            </div>
+            <div style="text-align:right;min-width:90px"><strong>{{ item.final_line_price | money }}</strong></div>
+          </div>
+        {%- endfor -%}
+
+        {%- if settings.cart_show_note -%}
+          <div class="cart-note" style="margin-top:1.5rem">
+            <label for="CartNote" style="font-weight:600;display:block;margin-bottom:.5rem">{{ 'cart.general.note' | t }}</label>
+            <textarea id="CartNote" name="note" rows="3">{{ cart.note }}</textarea>
+          </div>
+        {%- endif -%}
+
+        <div style="display:flex;justify-content:flex-end;margin-top:1.5rem">
+          <div style="min-width:300px">
+            <div class="cart-subtotal"><span>{{ 'cart.general.subtotal' | t }}</span><strong>{{ cart.total_price | money }}</strong></div>
+            <p style="font-size:.85rem;color:var(--color-foreground-soft);margin-bottom:1rem">{{ 'cart.general.taxes_and_shipping_at_checkout' | t }}</p>
+            <button type="submit" name="checkout" class="button--primary button--full button--lg">{{ 'cart.general.checkout' | t }}</button>
+            <a href="{{ routes.all_products_collection_url }}" class="button--secondary button--full" style="margin-top:.7rem">{{ 'cart.general.continue_shopping' | t }}</a>
+          </div>
+        </div>
+      </form>
+    {%- else -%}
+      <div class="cart-empty">
+        <div style="color:var(--color-foreground-soft);margin-bottom:1rem">{% render 'icon', name: 'empty-cart', width: 64, height: 64 %}</div>
+        <h2>{{ 'cart.general.empty' | t }}</h2>
+        <a href="{{ routes.all_products_collection_url }}" class="button--primary button--lg" style="margin-top:1.5rem">{{ 'cart.general.continue_shopping' | t }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Cart page", "settings": [] }
+{% endschema %}

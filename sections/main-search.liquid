@@ -1,0 +1,41 @@
+<section class="section section--tight">
+  <div class="page-width">
+    <div class="page-width--narrow" style="margin-inline:auto;text-align:center;margin-bottom:2.5rem">
+      <span class="eyebrow eyebrow--leaf">{{ 'general.search.search' | t }}</span>
+      <h1>{{ 'general.search.search' | t }}</h1>
+      <form action="{{ routes.search_url }}" method="get" role="search" style="margin-top:1.5rem">
+        <div class="newsletter__form" style="margin-inline:auto">
+          <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.search' | t }}">
+          <button type="submit" class="button--primary">{{ 'general.search.search' | t }}</button>
+        </div>
+      </form>
+    </div>
+
+    {%- if search.performed -%}
+      {%- if search.results.size > 0 -%}
+        <p class="text-center" style="margin-bottom:2rem;color:var(--color-foreground-soft)">{{ 'general.search.results_with_count' | t: count: search.results_count }}</p>
+        <div class="product-grid">
+          {%- for item in search.results -%}
+            {%- if item.object_type == 'product' -%}
+              {% render 'product-card', product: item %}
+            {%- else -%}
+              <a href="{{ item.url }}" class="product-card reveal">
+                <div class="product-card__info">
+                  <span class="product-card__vendor">{{ item.object_type }}</span>
+                  <span class="product-card__title">{{ item.title }}</span>
+                  <p style="color:var(--color-foreground-soft);font-size:.9rem">{{ item.content | default: item.excerpt | strip_html | truncate: 100 }}</p>
+                </div>
+              </a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <p class="text-center" style="padding:2rem 0;color:var(--color-foreground-soft)">{{ 'general.search.no_results' | t: terms: search.terms }}</p>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Search results", "settings": [] }
+{% endschema %}

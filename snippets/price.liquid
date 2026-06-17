@@ -1,0 +1,23 @@
+{%- comment -%}
+  Price snippet. Pass `product` or `variant`.
+  Renders current price + compare-at strike + sale badge.
+{%- endcomment -%}
+{%- liquid
+  if variant
+    assign target = variant
+  else
+    assign target = product
+  endif
+  assign on_sale = false
+  if target.compare_at_price > target.price
+    assign on_sale = true
+  endif
+-%}
+<span class="price-wrap">
+  {%- if on_sale -%}
+    <span class="price price--sale" style="color: var(--color-sale)">{{ target.price | money }}</span>
+    <s class="price--compare">{{ target.compare_at_price | money }}</s>
+  {%- else -%}
+    <span class="price">{{ target.price | money }}</span>
+  {%- endif -%}
+</span>

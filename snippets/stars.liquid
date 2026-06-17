@@ -1,0 +1,24 @@
+{%- comment -%}
+  Star rating. Params:
+  - rating (number, default 5)
+  - count (optional number of reviews)
+  - show_count (boolean)
+{%- endcomment -%}
+{%- liquid
+  assign r = rating | default: 5.0 | times: 1.0
+  assign full = r | round
+-%}
+<span class="rating-row">
+  <span class="stars" role="img" aria-label="{{ r }} out of 5 stars">
+    {%- for i in (1..5) -%}
+      {%- if i <= full -%}
+        {% render 'icon', name: 'star' %}
+      {%- else -%}
+        <span style="opacity:.25">{% render 'icon', name: 'star' %}</span>
+      {%- endif -%}
+    {%- endfor -%}
+  </span>
+  {%- if show_count and count -%}
+    <span class="rating-count">{{ count }} reviews</span>
+  {%- endif -%}
+</span>

@@ -1,0 +1,86 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "enable_sticky_atc": true
+      },
+      "blocks": {
+        "title": { "type": "title" },
+        "rating": { "type": "rating", "settings": { "rating": 5, "rating_text": "4.9 · 2,140 reviews" } },
+        "price": { "type": "price" },
+        "features": { "type": "features", "settings": { "features": "Whisper-quiet mist under 25 dB\nUp to 10 hours of continuous calm\nWarm amber mood light, 7 soft tones\nAuto shut-off for overnight safety" } },
+        "buy": { "type": "buy_buttons", "settings": { "show_dynamic_checkout": true } },
+        "reassurance": { "type": "reassurance", "settings": { "item_1": "Free shipping", "item_2": "30-night returns", "item_3": "2-year warranty" } },
+        "description": { "type": "description" },
+        "ship": { "type": "collapsible", "settings": { "heading": "Shipping & returns", "content": "<p>Free carbon-neutral shipping on every order. Try it for 30 nights — if it's not for you, return it for a full refund.</p>" } },
+        "care": { "type": "collapsible", "settings": { "heading": "Care & cleaning", "content": "<p>Wipe the tank with a soft cloth weekly. A drop of white vinegar keeps the mist plate clear and the diffuser running like new.</p>" } }
+      },
+      "block_order": ["title", "rating", "price", "features", "buy", "reassurance", "description", "ship", "care"]
+    },
+    "trust": {
+      "type": "trust-bar",
+      "settings": { "bg_style": "alt" },
+      "blocks": {
+        "t1": { "type": "item", "settings": { "text": "100% pure plant essential oils", "icon": "leaf" } },
+        "t2": { "type": "item", "settings": { "text": "Whisper quiet", "icon": "drop" } },
+        "t3": { "type": "item", "settings": { "text": "30-night guarantee", "icon": "moon" } },
+        "t4": { "type": "item", "settings": { "text": "Free shipping", "icon": "truck" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"]
+    },
+    "how": {
+      "type": "how-it-works",
+      "settings": {
+        "eyebrow": "Simple ritual",
+        "heading": "How it works",
+        "subheading": "Three steps to a calmer space."
+      },
+      "blocks": {
+        "s1": { "type": "step", "settings": { "title": "Fill with water", "text": "Pour clean water up to the fill line." } },
+        "s2": { "type": "step", "settings": { "title": "Add a few drops", "text": "Drop in your favourite essential oil blend." } },
+        "s3": { "type": "step", "settings": { "title": "Breathe & unwind", "text": "Tap once for a soft mist and warm glow." } }
+      },
+      "block_order": ["s1", "s2", "s3"]
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "bg_style": "alt",
+        "eyebrow": "Real reviews",
+        "heading": "Loved by thousands",
+        "show_summary": true,
+        "summary_text": "4.9/5 from 2,140 verified reviews"
+      },
+      "blocks": {
+        "v1": { "type": "testimonial", "settings": { "quote": "I fall asleep so much faster now. The mist is silky and the lavender blend is heavenly.", "name": "Maya R.", "role": "Portland, OR", "verified": true } },
+        "v2": { "type": "testimonial", "settings": { "quote": "It looks gorgeous on my nightstand and it's whisper quiet.", "name": "Jordan T.", "role": "Austin, TX", "verified": true } },
+        "v3": { "type": "testimonial", "settings": { "quote": "Finally a diffuser with real essential oils, not fake fragrance.", "name": "Priya S.", "role": "Brooklyn, NY", "verified": true } }
+      },
+      "block_order": ["v1", "v2", "v3"]
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "eyebrow": "Good to know", "heading": "Questions, answered" },
+      "blocks": {
+        "q1": { "type": "faq", "settings": { "question": "How long does one fill last?", "answer": "<p>Up to 10 hours on the low setting — enough for a full night.</p>" } },
+        "q2": { "type": "faq", "settings": { "question": "Which essential oils can I use?", "answer": "<p>Any pure, water-soluble essential oil. We recommend our Verdura blends.</p>" } },
+        "q3": { "type": "faq", "settings": { "question": "Is it safe overnight?", "answer": "<p>Yes — auto shut-off turns it off the moment the water runs low.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3"]
+    },
+    "guarantee": {
+      "type": "guarantee",
+      "settings": {
+        "bg_style": "alt",
+        "seal_number": "30",
+        "seal_text": "Night trial",
+        "heading": "Love it, or your money back",
+        "text": "If you're not sleeping calmer within 30 nights, we'll refund every cent — and you can keep the oils on us.",
+        "button_text": "",
+        "button_link": ""
+      }
+    }
+  },
+  "order": ["main", "trust", "how", "testimonials", "faq", "guarantee"]
+}

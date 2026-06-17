@@ -1,0 +1,16 @@
+<section class="section section--tight">
+  <div class="page-width page-width--narrow" style="max-width:460px">
+    <div class="text-center" style="margin-bottom:2rem">
+      <span class="eyebrow eyebrow--leaf">Welcome</span>
+      <h1>Activate account</h1>
+      <p class="section-subtext">Create a password to activate your account.</p>
+    </div>
+    {%- form 'activate_customer_password' -%}
+      {{ form.errors | default_errors }}
+      <div class="field"><label for="apass">Password</label><input type="password" name="customer[password]" id="apass" required></div>
+      <div class="field"><label for="apassc">Confirm password</label><input type="password" name="customer[password_confirmation]" id="apassc" required></div>
+      <button type="submit" class="button--primary button--full button--lg">Activate account</button>
+      <button type="submit" name="decline" class="button--secondary button--full" style="margin-top:.7rem">Decline invitation</button>
+    {%- endform -%}
+  </div>
+</section>

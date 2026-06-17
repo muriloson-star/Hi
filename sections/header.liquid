@@ -1,0 +1,91 @@
+{%- liquid
+  assign menu = linklists[section.settings.menu]
+-%}
+<header class="header" data-header>
+  <div class="page-width header__inner">
+    <button class="header__icon header__menu-toggle" data-menu-toggle aria-label="{{ 'accessibility.menu' | t }}">
+      {% render 'icon', name: 'menu' %}
+    </button>
+
+    <a href="{{ routes.root_url }}" class="header__logo">
+      {%- if section.settings.logo != blank -%}
+        <img src="{{ section.settings.logo | image_url: width: 320 }}"
+             alt="{{ shop.name }}" width="160" style="max-height: {{ section.settings.logo_height }}px">
+      {%- else -%}
+        {{ section.settings.logo_text | default: shop.name }}
+      {%- endif -%}
+    </a>
+
+    <nav class="header__nav" aria-label="Primary">
+      {%- for link in menu.links -%}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {%- endfor -%}
+    </nav>
+
+    <div class="header__actions">
+      {%- if section.settings.show_search -%}
+        <a href="{{ routes.search_url }}" class="header__icon" aria-label="{{ 'accessibility.search' | t }}">
+          {% render 'icon', name: 'search' %}
+        </a>
+      {%- endif -%}
+      <a href="{{ routes.cart_url }}" class="header__icon" data-cart-open aria-label="{{ 'accessibility.cart' | t }}">
+        {% render 'icon', name: 'cart' %}
+        <span class="cart-count" data-cart-count {% if cart.item_count == 0 %}hidden{% endif %}>{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+{%- comment -%} Mobile navigation {%- endcomment -%}
+<div class="overlay" data-overlay></div>
+<nav class="mobile-nav" data-mobile-nav aria-label="Mobile">
+  <div class="mobile-nav__header">
+    <span class="header__logo" style="font-size:1.3rem">{{ section.settings.logo_text | default: shop.name }}</span>
+    <button class="header__icon" data-menu-close aria-label="{{ 'accessibility.close' | t }}">{% render 'icon', name: 'close' %}</button>
+  </div>
+  {%- for link in menu.links -%}
+    <a href="{{ link.url }}" data-menu-close>{{ link.title }}</a>
+  {%- endfor -%}
+  <a href="{{ routes.search_url }}" data-menu-close>{{ 'general.search.search' | t }}</a>
+</nav>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo text (if no image)",
+      "default": "Verdura"
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Logo height",
+      "default": 40
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search icon",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

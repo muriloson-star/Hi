@@ -1,0 +1,51 @@
+<section class="section {% if section.settings.bg_style == 'alt' %}section--alt{% endif %}">
+  <div class="page-width">
+    <div class="text-center reveal">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow eyebrow--leaf">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="section-heading text-balance">{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.subheading != blank -%}<p class="section-subtext section-heading">{{ section.settings.subheading }}</p>{%- endif -%}
+    </div>
+    <div class="grid benefits__grid">
+      {%- for block in section.blocks -%}
+        <div class="benefit reveal" {{ block.shopify_attributes }}>
+          <div class="benefit__icon">{% render 'icon', name: block.settings.icon, width: 30, height: 30 %}</div>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Benefits",
+  "settings": [
+    { "type": "select", "id": "bg_style", "label": "Background", "options": [ { "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" } ], "default": "default" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Why you'll love it" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Wellness you can feel in every breath" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Thoughtfully engineered to help you unwind, naturally." }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "options": [ { "value": "moon", "label": "Moon" }, { "value": "drop", "label": "Drop" }, { "value": "leaf", "label": "Leaf" }, { "value": "shield", "label": "Shield" }, { "value": "heart", "label": "Heart" }, { "value": "clock", "label": "Clock" }, { "value": "sparkle", "label": "Sparkle" }, { "value": "leaf-eco", "label": "Eco" } ], "default": "moon" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Deeper sleep" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Lavender & chamomile mist helps you drift off faster and wake up restored." }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [ { "name": "Benefits" } ],
+  "default": {
+    "blocks": [
+      { "type": "benefit", "settings": { "icon": "moon", "title": "Deeper, calmer sleep", "text": "A soft lavender mist signals your body it's time to wind down." } },
+      { "type": "benefit", "settings": { "icon": "drop", "title": "Pure plant essential oils", "text": "No synthetics, no fillers — just steam-distilled botanicals." } },
+      { "type": "benefit", "settings": { "icon": "leaf", "title": "Cleaner, fresher air", "text": "Ultrasonic mist gently humidifies and freshens any room." } },
+      { "type": "benefit", "settings": { "icon": "clock", "title": "Up to 10 hours of calm", "text": "One fill lasts all night on the whisper-quiet low setting." } }
+    ]
+  }
+}
+{% endschema %}

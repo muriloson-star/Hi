@@ -1,0 +1,36 @@
+<section class="section section--tight">
+  <div class="page-width page-width--narrow">
+    <div class="text-center" style="margin-bottom:2rem">
+      <span class="eyebrow eyebrow--leaf">My account</span>
+      <h1>Your addresses</h1>
+    </div>
+
+    <div style="text-align:center;margin-bottom:2rem">
+      <button type="button" class="button--primary" onclick="document.getElementById('AddAddress').style.display='block';this.style.display='none'">Add a new address</button>
+    </div>
+
+    <div id="AddAddress" style="display:none;background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius);padding:1.5rem;margin-bottom:2rem">
+      <h3 style="margin-bottom:1rem">New address</h3>
+      {%- form 'customer_address', customer.new_address -%}
+        <div class="field"><label>First name</label><input type="text" name="address[first_name]"></div>
+        <div class="field"><label>Last name</label><input type="text" name="address[last_name]"></div>
+        <div class="field"><label>Address</label><input type="text" name="address[address1]"></div>
+        <div class="field"><label>City</label><input type="text" name="address[city]"></div>
+        <div class="field"><label>Country</label><input type="text" name="address[country]"></div>
+        <div class="field"><label>Zip</label><input type="text" name="address[zip]"></div>
+        <button type="submit" class="button--primary button--full">Save address</button>
+      {%- endform -%}
+    </div>
+
+    {%- paginate customer.addresses by 5 -%}
+      {%- for address in customer.addresses -%}
+        <div style="background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius);padding:1.3rem;margin-bottom:1rem">
+          {%- if address == customer.default_address -%}<span class="pill" style="margin-bottom:.6rem">Default</span>{%- endif -%}
+          <p style="color:var(--color-foreground-soft)">{{ address | format_address }}</p>
+        </div>
+      {%- endfor -%}
+    {%- endpaginate -%}
+
+    <p style="text-align:center;margin-top:1.5rem"><a href="{{ routes.account_url }}" class="link-arrow">Back to account</a></p>
+  </div>
+</section>

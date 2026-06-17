@@ -1,0 +1,43 @@
+<section class="marquee {% if section.settings.bg_style == 'alt' %}section--alt{% endif %}" aria-label="Trust highlights">
+  <div class="marquee__track">
+    {%- for i in (1..2) -%}
+      {%- for block in section.blocks -%}
+        <span class="marquee__item" {% if forloop.parentloop.first %}{{ block.shopify_attributes }}{% endif %}>
+          {%- if block.settings.icon != 'none' -%}{% render 'icon', name: block.settings.icon, width: 20, height: 20 %}{%- endif -%}
+          {{ block.settings.text }}
+        </span>
+      {%- endfor -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trust bar",
+  "settings": [
+    { "type": "select", "id": "bg_style", "label": "Background", "options": [ { "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" } ], "default": "default" }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "100% pure essential oils" },
+        { "type": "select", "id": "icon", "label": "Icon", "options": [ { "value": "none", "label": "None" }, { "value": "leaf", "label": "Leaf" }, { "value": "drop", "label": "Drop" }, { "value": "shield", "label": "Shield" }, { "value": "truck", "label": "Truck" }, { "value": "heart", "label": "Heart" }, { "value": "moon", "label": "Moon" }, { "value": "leaf-eco", "label": "Eco" }, { "value": "sparkle", "label": "Sparkle" } ], "default": "leaf" }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [ { "name": "Trust bar" } ],
+  "default": {
+    "blocks": [
+      { "type": "item", "settings": { "text": "100% pure plant essential oils", "icon": "leaf" } },
+      { "type": "item", "settings": { "text": "BPA-free & whisper quiet", "icon": "drop" } },
+      { "type": "item", "settings": { "text": "30-night calm guarantee", "icon": "moon" } },
+      { "type": "item", "settings": { "text": "Free carbon-neutral shipping", "icon": "truck" } },
+      { "type": "item", "settings": { "text": "Cruelty-free & vegan", "icon": "heart" } },
+      { "type": "item", "settings": { "text": "Sustainably sourced", "icon": "leaf-eco" } }
+    ]
+  }
+}
+{% endschema %}

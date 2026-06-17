@@ -1,0 +1,44 @@
+<section class="section section--tight">
+  <div class="page-width">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:2rem">
+      <div>
+        <span class="eyebrow eyebrow--leaf">My account</span>
+        <h1>Hi, {{ customer.first_name | default: 'friend' }}</h1>
+      </div>
+      <a href="{{ routes.account_logout_url }}" class="button--secondary">Sign out</a>
+    </div>
+
+    <div class="grid" style="grid-template-columns:1.6fr 1fr;align-items:start">
+      <div>
+        <h2 style="margin-bottom:1rem">Order history</h2>
+        {%- paginate customer.orders by 10 -%}
+          {%- if customer.orders.size > 0 -%}
+            <div style="background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius);overflow:hidden">
+              {%- for order in customer.orders -%}
+                <a href="{{ order.customer_url }}" style="display:flex;justify-content:space-between;gap:1rem;padding:1.1rem 1.3rem;border-bottom:1px solid var(--color-border)">
+                  <span><strong>{{ order.name }}</strong><br><small style="color:var(--color-foreground-soft)">{{ order.created_at | date: '%b %-d, %Y' }}</small></span>
+                  <span style="text-align:right">{{ order.total_price | money }}<br><small style="color:var(--color-primary)">{{ order.financial_status_label }}</small></span>
+                </a>
+              {%- endfor -%}
+            </div>
+          {%- else -%}
+            <p style="color:var(--color-foreground-soft)">You haven't placed any orders yet.</p>
+          {%- endif -%}
+        {%- endpaginate -%}
+      </div>
+
+      <div>
+        <h2 style="margin-bottom:1rem">Account details</h2>
+        <div style="background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius);padding:1.3rem">
+          <p>{{ customer.name }}</p>
+          <p style="color:var(--color-foreground-soft)">{{ customer.email }}</p>
+          {%- if customer.default_address -%}
+            <hr style="border:none;border-top:1px solid var(--color-border);margin:1rem 0">
+            <p style="color:var(--color-foreground-soft)">{{ customer.default_address | format_address }}</p>
+          {%- endif -%}
+          <a href="{{ routes.account_addresses_url }}" class="link-arrow" style="margin-top:1rem;display:inline-flex">Manage addresses</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
